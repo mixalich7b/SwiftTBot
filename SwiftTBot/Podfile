@@ -1,0 +1,14 @@
+workspace 'SwiftTBot.xcworkspace'
+use_frameworks!
+
+target 'SwiftTBot_iOS', :exclusive => true do
+	xcodeproj 'SwiftTBot.xcodeproj'
+	platform :ios, '8.0'
+	pod 'ObjectMapper', '~> 1.2'
+end
+
+target 'SwiftTBot_OSX', :exclusive => true do
+	xcodeproj 'SwiftTBot.xcodeproj'
+	platform :osx, '10.9'
+	pod 'ObjectMapper', '~> 1.2'
+end
