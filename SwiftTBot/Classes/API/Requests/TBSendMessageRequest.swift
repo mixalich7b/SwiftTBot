@@ -8,8 +8,8 @@
 
 import ObjectMapper
 
-public class TBSendMessageRequest: TBRequest {
-    override public func getMethod() -> String {
+public class TBSendMessageRequest: TBRequest<TBEntity> {
+    override internal func getMethod() -> String {
         return "sendMessage"
     }
     

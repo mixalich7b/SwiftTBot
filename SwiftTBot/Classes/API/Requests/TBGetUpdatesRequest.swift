@@ -8,7 +8,11 @@
 
 import ObjectMapper
 
-public class TBGetUpdatesRequest: TBRequest {
+public class TBGetUpdatesRequest: TBRequest<TBUpdate> {
+    override internal func getMethod() -> String {
+        return "getUpdates"
+    }
+    
     var offset: Int?
     var limit: Int?
     var timeout: Int?

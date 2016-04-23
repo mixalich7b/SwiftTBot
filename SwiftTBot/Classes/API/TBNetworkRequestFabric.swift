@@ -8,10 +8,10 @@
 
 import ObjectMapper
 
-public final class TBNetworkRequestFabric {
+internal final class TBNetworkRequestFabric {
     private static let baseUrl = "https://api.telegram.org/bot"
     
-    public class func networkRequestWithRequest(request: TBRequest, token: String) -> NSURLRequest? {
+    internal class func networkRequestWithRequest<ResponseEntity: TBEntity>(request: TBRequest<ResponseEntity>, token: String) -> NSURLRequest? {
         let URLString = "\(self.baseUrl)\(token)/\(request.getMethod())"
         guard let URL = NSURL(string: URLString) else {
             return Optional.None

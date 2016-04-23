@@ -6,8 +6,14 @@
 //  Copyright © 2016 mixalich7b. All rights reserved.
 //
 
-import UIKit
+import ObjectMapper
 
-class TBGetMeRequest: TBRequest {
-
+public class TBGetMeRequest: TBRequest<TBUser> {
+    override internal func getMethod() -> String {
+        return "getMe"
+    }
+    
+    convenience public init() {
+        self.init(JSON: [:])!
+    }
 }
