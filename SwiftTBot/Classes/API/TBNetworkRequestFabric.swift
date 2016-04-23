@@ -16,10 +16,13 @@ internal final class TBNetworkRequestFabric {
         guard let URL = NSURL(string: URLString) else {
             return Optional.None
         }
+        guard let JSONString = request.toJSONString() else {
+            return Optional.None
+        }
         let URLRequest = NSMutableURLRequest(URL: URL)
         URLRequest.HTTPMethod = "POST"
         URLRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        URLRequest.HTTPBody = request.toJSONString()?.dataUsingEncoding(NSUTF8StringEncoding)
+        URLRequest.HTTPBody = JSONString.dataUsingEncoding(NSUTF8StringEncoding)
         return URLRequest.copy() as? NSURLRequest
     }
 }
