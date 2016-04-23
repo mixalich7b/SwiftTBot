@@ -8,7 +8,7 @@
 
 import ObjectMapper
 
-public class TBGetMeRequest: TBRequest<TBUser> {
+public class TBGetMeRequest<Res: TBUser>: TBRequest<Res> {
     override internal func getMethod() -> String {
         return "getMe"
     }

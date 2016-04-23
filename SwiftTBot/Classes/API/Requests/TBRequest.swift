@@ -8,7 +8,7 @@
 
 import ObjectMapper
 
-public class TBRequest<T: TBEntity>: Mappable {
+public class TBRequest<Res: TBEntity>: Mappable {
     internal func getMethod() -> String {
         assert(false, "Must be overriden")
         return ""
