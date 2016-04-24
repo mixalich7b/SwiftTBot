@@ -8,14 +8,6 @@
 
 import ObjectMapper
 
-public enum TBError: ErrorType {
-    case WrongRequest
-    case NetworkError(response: NSURLResponse?, error: NSError?)
-    case WrongResponseData(responseData: NSData, response: NSURLResponse?, error: NSError?)
-    case ProtocolError(description: String?)
-    case ResponseParsingError(responseDictionary: Dictionary<String, AnyObject>, response: NSURLResponse?, error: NSError?)
-}
-
 public class TBot {
     private let token: String
     

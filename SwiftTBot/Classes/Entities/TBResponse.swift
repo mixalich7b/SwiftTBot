@@ -13,11 +13,11 @@ public class TBResponse<T: TBEntity>: Mappable {
     public var error: TBError?
     public var responseEntities: [T]?
     
-//    let errorDescriptionTransorm = TransformOf<String, TBError>(fromJSON: {(value: String?) -> TBError? in
-//        return value != nil ? TBError.ProtocolError(description: value) : Optional.None
-//    }, toJSON: {(value: TBError?) -> Map? in
-//        
-//    })
+    let errorDescriptionTransorm = TransformOf<TBError, String>(fromJSON: {(value: String?) -> TBError? in
+        return value.map{TBError.ProtocolError(description: $0)}
+    }, toJSON: {(value: TBError?) -> String? in
+        return value?.description
+    })
     
     convenience init(isOk: Bool, responseEntities: [T]?, error: TBError?) {
         self.init(JSON: [:])!
@@ -31,7 +31,15 @@ public class TBResponse<T: TBEntity>: Mappable {
     
     public func mapping(map: Map) {
         isOk <- map["ok"]
-        error <- map["description"]
+        error <- (map["description"], errorDescriptionTransorm)
         responseEntities <- map["result"]
+        if responseEntities == nil {
+            var responseEntity: T?
+            responseEntity <- map["result"]
+            guard let singleEntity = responseEntity else {
+                return
+            }
+            responseEntities = [singleEntity]
+        }
     }
 }

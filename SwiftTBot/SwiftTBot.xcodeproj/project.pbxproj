@@ -42,6 +42,8 @@
 		B2C687A51CCAED73006915B7 /* TBResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C687A31CCAED72006915B7 /* TBResponse.swift */; };
 		B2C687A71CCAFD63006915B7 /* TBRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C687A61CCAFD63006915B7 /* TBRequest.swift */; };
 		B2C687A81CCAFD63006915B7 /* TBRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C687A61CCAFD63006915B7 /* TBRequest.swift */; };
+		B2C687AE1CCD7E21006915B7 /* TBError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C687AD1CCD7E21006915B7 /* TBError.swift */; };
+		B2C687AF1CCD7E21006915B7 /* TBError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C687AD1CCD7E21006915B7 /* TBError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +98,7 @@
 		B2C687941CCABF72006915B7 /* TBotDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBotDelegate.swift; sourceTree = "<group>"; };
 		B2C687A31CCAED72006915B7 /* TBResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBResponse.swift; sourceTree = "<group>"; };
 		B2C687A61CCAFD63006915B7 /* TBRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBRequest.swift; sourceTree = "<group>"; };
+		B2C687AD1CCD7E21006915B7 /* TBError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBError.swift; sourceTree = "<group>"; };
 		D21BDBE5DFA9F1D94037D033 /* Pods-SwiftTBot_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftTBot_iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftTBot_iOS/Pods-SwiftTBot_iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		D6607C87805D3F974A6E5ED6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EB6ABF20681CB11A0AD421BC /* Pods-SwiftTBot-OSX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftTBot-OSX.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftTBot-OSX/Pods-SwiftTBot-OSX.release.xcconfig"; sourceTree = "<group>"; };
@@ -227,6 +230,7 @@
 				B2C687651CC986A8006915B7 /* Entities */,
 				B2C687661CC9871B006915B7 /* TBot.swift */,
 				B2C687941CCABF72006915B7 /* TBotDelegate.swift */,
+				B2C687AD1CCD7E21006915B7 /* TBError.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -534,6 +538,7 @@
 				B2C687831CC99C92006915B7 /* TBGetMeRequest.swift in Sources */,
 				B2C687671CC9871B006915B7 /* TBot.swift in Sources */,
 				B2C687891CC99E4A006915B7 /* TBNetworkRequestFabric.swift in Sources */,
+				B2C687AE1CCD7E21006915B7 /* TBError.swift in Sources */,
 				B2C687751CC99892006915B7 /* TBChat.swift in Sources */,
 				B2C687951CCABF72006915B7 /* TBotDelegate.swift in Sources */,
 				B2C6877D1CC99B95006915B7 /* TBUpdate.swift in Sources */,
@@ -562,6 +567,7 @@
 				B2C687841CC99C92006915B7 /* TBGetMeRequest.swift in Sources */,
 				B2C6879F1CCAE0DF006915B7 /* TBotDelegate.swift in Sources */,
 				B2C687681CC9871B006915B7 /* TBot.swift in Sources */,
+				B2C687AF1CCD7E21006915B7 /* TBError.swift in Sources */,
 				B2C6878A1CC99E4A006915B7 /* TBNetworkRequestFabric.swift in Sources */,
 				B2C687761CC99892006915B7 /* TBChat.swift in Sources */,
 				B2C6877E1CC99B95006915B7 /* TBUpdate.swift in Sources */,
