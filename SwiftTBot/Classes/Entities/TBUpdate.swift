@@ -9,8 +9,8 @@
 import ObjectMapper
 
 public class TBUpdate: TBEntity {
-    var id: Int!
-    var message: TBMessage?
+    public var id: Int!
+    public var message: TBMessage?
     
     required public init?(_ map: Map) {
         super.init(map)

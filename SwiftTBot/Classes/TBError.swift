@@ -9,7 +9,7 @@
 import Foundation
 
 public enum TBError: ErrorType {
-    case WrongRequest
+    case BadRequest
     case NetworkError(response: NSURLResponse?, error: NSError?)
     case WrongResponseData(responseData: NSData, response: NSURLResponse?, error: NSError?)
     case ProtocolError(description: String?)
@@ -19,7 +19,7 @@ public enum TBError: ErrorType {
 extension TBError: CustomStringConvertible {
     public var description: String { get {
         switch self {
-            case .WrongRequest: return "WrongRequest"
+            case .BadRequest: return "BadRequest"
             case .NetworkError(_, let error): return "Network error: \(error?.localizedDescription)"
             case .WrongResponseData(let responseData, _, _): return "Wrong response: \(NSString(data: responseData, encoding: NSUTF8StringEncoding))"
             case ProtocolError(let description): return "Protocol error: \(description)"

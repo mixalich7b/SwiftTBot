@@ -16,11 +16,11 @@ public enum TBChatType: String {
 }
 
 public class TBChat: TBEntity {
-    var id: Int!
-    var type: TBChatType!
-    var username: String?
-    var firstName: String?
-    var lastName: String?
+    public var id: Int!
+    public var type: TBChatType!
+    public var username: String?
+    public var firstName: String?
+    public var lastName: String?
     
     override public func mapping(map: Map) {
         super.mapping(map)

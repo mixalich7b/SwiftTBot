@@ -10,6 +10,7 @@ import ObjectMapper
 
 public class TBot {
     private let token: String
+    public private(set) var botUsername: String?
     
     private var delegates: NSPointerArray = NSPointerArray.weakObjectsPointerArray()
     private let delegatesOperatingQueue = dispatch_queue_create("ru.mixalich7b.TBot.delegates", DISPATCH_QUEUE_SERIAL)
@@ -27,14 +28,15 @@ public class TBot {
     
     public func start() throws {
         let request = TBGetMeRequest()
-        try self.sendRequest(request) { (response) in
-            response.responseEntities?.first?.firstName
+        try self.sendRequest(request) {[weak self] (response) in
+            self?.botUsername = response.responseEntities?.first?.username
+            
         }
     }
     
-    private func sendRequest<ResponseEntity: TBEntity>(request: TBRequest<ResponseEntity>, completion: (TBResponse<ResponseEntity>) -> Void) throws {
+    public func sendRequest<ResponseEntity: TBEntity>(request: TBRequest<ResponseEntity>, completion: (TBResponse<ResponseEntity>) -> Void) throws {
         guard let URLRequest = TBNetworkRequestFabric.networkRequestWithRequest(request, token: self.token) else {
-            throw TBError.WrongRequest
+            throw TBError.BadRequest
         }
         self.URLSession.dataTaskWithRequest(URLRequest) { (data, requestResponse, requestError) in
             guard let responseData = data else {

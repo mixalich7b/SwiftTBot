@@ -9,5 +9,5 @@
 import Foundation
 
 public protocol TBotDelegate : AnyObject {
-    func didReceiveMessages(messages: [TBMessage]) -> Void
+    func didReceiveMessages(messages: [TBMessage], fromBot bot: TBot) -> Void
 }

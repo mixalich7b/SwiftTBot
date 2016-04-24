@@ -1,0 +1,17 @@
+PODS:
+  - ObjectMapper (1.2.0)
+  - SwiftTBot (0.1.0):
+    - ObjectMapper (~> 1.2)
+
+DEPENDENCIES:
+  - SwiftTBot (from `../../`)
+
+EXTERNAL SOURCES:
+  SwiftTBot:
+    :path: ../../
+
+SPEC CHECKSUMS:
+  ObjectMapper: b1e9c7c8a9f6400b72690c80072c131504caa66f
+  SwiftTBot: e449102af280b07f9a6a54154ec799db7eb59eb3
+
+COCOAPODS: 0.39.0

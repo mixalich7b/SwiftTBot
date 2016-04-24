@@ -9,9 +9,9 @@
 import ObjectMapper
 
 public class TBMessage: TBEntity {
-    var id: Int!
-    var chat: TBChat!
-    var text: String?
+    public var id: Int!
+    public var chat: TBChat!
+    public var text: String?
         
     override public func mapping(map: Map) {
         super.mapping(map)

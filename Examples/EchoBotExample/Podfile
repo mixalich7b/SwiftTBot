@@ -1,0 +1,9 @@
+platform :osx, '10.9'
+use_frameworks!
+
+workspace 'EchoBotExample.xcworkspace'
+
+target 'EchoBotExample' do
+	xcodeproj 'EchoBotExample.xcodeproj'
+	pod 'SwiftTBot', :path => '../../'
+end
