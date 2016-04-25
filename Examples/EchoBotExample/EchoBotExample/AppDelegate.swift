@@ -12,7 +12,7 @@ import SwiftTBot
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, TBotDelegate {
 
-    private let bot = TBot(token: "155474079:AAGhfQ3DB-KGFw26vbyYXRWnc-KwktXuexw")
+    private let bot = TBot(token: "<your_token>")
     
     @IBOutlet weak var window: NSWindow!
 
@@ -45,7 +45,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, TBotDelegate {
         guard let text = message.text else {
             return
         }
-        let echoRequest = TBSendMessageRequest(chatId: message.chat.id, text: text)
+        let echoRequest = TBSendMessageRequest(chatId: message.chat.id, text: "Echo: \(text)")
         do {
             try self.bot.sendRequest(echoRequest, completion: { (response) in
                 if !response.isOk {

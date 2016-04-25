@@ -13,6 +13,10 @@ public class TBGetMeRequest<Res: TBUser>: TBRequest<Res> {
         return "getMe"
     }
     
+    required public init?(JSON: [String : AnyObject]) {
+        super.init(JSON: JSON)
+    }
+    
     convenience public init() {
         self.init(JSON: [:])!
     }

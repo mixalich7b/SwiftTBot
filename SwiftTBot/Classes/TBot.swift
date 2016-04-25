@@ -80,7 +80,7 @@ public class TBot {
         guard let URLRequest = TBNetworkRequestFabric.networkRequestWithRequest(request, token: self.token) else {
             throw TBError.BadRequest
         }
-        self.URLSession.dataTaskWithRequest(URLRequest) {[weak self] (data, requestResponse, requestError) in
+        let task = self.URLSession.dataTaskWithRequest(URLRequest) {[weak self] (data, requestResponse, requestError) in
             guard let strongSelf = self else {
                 return
             }
@@ -123,6 +123,7 @@ public class TBot {
                 })
             })
         }
+        task.resume()
     }
 }
 

@@ -17,6 +17,10 @@ public class TBSendMessageRequest<Res: TBEntity>: TBRequest<Res> {
     var channelUsername: String?
     var text: String! = ""
     
+    required public init?(JSON: [String : AnyObject]) {
+        super.init(JSON: JSON)
+    }
+    
     convenience public init(chatId: Int, text: String) {
         self.init(JSON: [:])!
         self.chatId = chatId
