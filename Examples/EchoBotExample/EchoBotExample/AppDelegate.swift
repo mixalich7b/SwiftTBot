@@ -19,10 +19,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, TBotDelegate {
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         bot.delegate = self
-        do {
-            try bot.start()
-        } catch {
-            print("Bot haven't started")
+        bot.start { (error) in
+            print("Bot haven't started, error: \(error)")
         }
     }
 
@@ -45,7 +43,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, TBotDelegate {
         guard let text = message.text else {
             return
         }
-        let echoRequest = TBSendMessageRequest(chatId: message.chat.id, text: "Echo: \(text)")
+        let replyHTML = "<i>\(text)</i>\n<a href='http://www.instml.com/'>Instaml</a>";
+        let keyboard = TBReplyKeyboardMarkup(keyboard: [
+            [TBKeyboardButton(text: "Contact", requestContact: true)],
+            [TBKeyboardButton(text: "Location", requestLocation: true)]
+            ]);
+        keyboard.selective = true
+        keyboard.oneTimeKeyboard = true
+        let echoRequest = TBSendMessageRequest(chatId: message.chat.id, text: replyHTML, replyMarkup: keyboard, parseMode: .HTML)
         do {
             try self.bot.sendRequest(echoRequest, completion: { (response) in
                 if !response.isOk {

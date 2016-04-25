@@ -9,10 +9,15 @@
 import ObjectMapper
 
 public class TBReplyKeyboardMarkup: TBEntity, TBReplyMarkupProtocol {
-    public var keyboard: [[TBKeyboardButton]]!
+    public var keyboard: [[TBKeyboardButton]]! = [[]]
     public var resizeKeyboard: Bool?
     public var oneTimeKeyboard: Bool?
     public var selective: Bool?
+    
+    public convenience init(keyboard: [[TBKeyboardButton]]) {
+        self.init(JSON: [:])!
+        self.keyboard = keyboard
+    }
     
     override public func mapping(map: Map) {
         super.mapping(map)

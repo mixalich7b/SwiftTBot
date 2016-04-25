@@ -17,6 +17,12 @@ public class TBMessage: TBEntity {
     public var forwardDate: NSDate?
     public var replyToMessage: TBMessage?
     public var text: String?
+    public var entities: [TBMessageEntity]?
+    public var caption: String?
+    public var contact: TBContact?
+    public var location: TBLocation?
+    public var venue: TBVenue?
+    public var pinnedMessage: TBMessage?
         
     override public func mapping(map: Map) {
         super.mapping(map)
@@ -29,5 +35,11 @@ public class TBMessage: TBEntity {
         forwardDate <- (map["forward_date"], TBUnixTimeTransform())
         replyToMessage <- map["reply_to_message"]
         text <- map["text"]
+        entities <- map["entities"]
+        caption <- map["caption"]
+        contact <- map["contact"]
+        location <- map["location"]
+        venue <- map["venue"]
+        pinnedMessage <- map["pinned_message"]
     }
 }

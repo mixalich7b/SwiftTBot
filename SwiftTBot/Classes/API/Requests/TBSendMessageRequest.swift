@@ -32,18 +32,20 @@ public class TBSendMessageRequest<Res: TBEntity, ReplyType where ReplyType: TBEn
         super.init(JSON: JSON)
     }
     
-    convenience public init(chatId: Int, text: String, parseMode: TBSendMessageParseMode = .None) {
+    convenience public init(chatId: Int, text: String, replyMarkup: ReplyType, parseMode: TBSendMessageParseMode = .None) {
         self.init(JSON: [:])!
         self.chatId = chatId
         self.text = text
         self.parseMode = parseMode
+        self.replyMarkup = replyMarkup
     }
     
-    convenience public init(channelUsername: String, text: String, parseMode: TBSendMessageParseMode = .None) {
+    convenience public init(channelUsername: String, text: String, replyMarkup: ReplyType, parseMode: TBSendMessageParseMode = .None) {
         self.init(JSON: [:])!
         self.channelUsername = channelUsername
         self.text = text
         self.parseMode = parseMode
+        self.replyMarkup = replyMarkup
     }
     
     override public func mapping(map: Map) {

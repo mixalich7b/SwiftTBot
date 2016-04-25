@@ -26,12 +26,22 @@ public class TBot {
         self.token = token
     }
     
-    public func start() throws {
+    public func start(fallback:(TBError?) -> Void) {
         let request = TBGetMeRequest()
-        try self.sendRequest(request) {[weak self] (response) in
-            self?.botUsername = response.responseEntities?.first?.username
-            self?.isRunning = true
-            self?.startPolling()
+        do {
+            try self.sendRequest(request) {[weak self] (response) in
+                if !response.isOk {
+                    fallback(response.error)
+                } else {
+                    self?.botUsername = response.responseEntities?.first?.username
+                    self?.isRunning = true
+                    self?.startPolling()
+                }
+            }
+        } catch TBError.BadRequest {
+            fallback(TBError.BadRequest)
+        } catch {
+            fallback(nil)
         }
     }
     
