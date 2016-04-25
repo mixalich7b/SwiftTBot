@@ -13,7 +13,7 @@ public class TBResponse<T: TBEntity>: Mappable {
     public var error: TBError?
     public var responseEntities: [T]?
     
-    let errorDescriptionTransorm = TransformOf<TBError, String>(fromJSON: {(value: String?) -> TBError? in
+    private let errorDescriptionTransorm = TransformOf<TBError, String>(fromJSON: {(value: String?) -> TBError? in
         return value.map{TBError.ProtocolError(description: $0)}
     }, toJSON: {(value: TBError?) -> String? in
         return value?.description

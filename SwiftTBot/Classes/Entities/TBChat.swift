@@ -18,6 +18,7 @@ public enum TBChatType: String {
 public class TBChat: TBEntity {
     public var id: Int!
     public var type: TBChatType!
+    public var title: String?
     public var username: String?
     public var firstName: String?
     public var lastName: String?
@@ -26,8 +27,9 @@ public class TBChat: TBEntity {
         super.mapping(map)
         
         id <- map["id"]
-        type <- map["type"]
+        type <- (map["type"], EnumTransform<TBChatType>())
         
+        title <- map["title"]
         username <- map["username"]
         firstName <- map["first_name"]
         lastName <- map["last_name"]
