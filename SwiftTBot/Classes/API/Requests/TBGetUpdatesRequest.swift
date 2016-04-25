@@ -17,6 +17,13 @@ public class TBGetUpdatesRequest<Res: TBUpdate>: TBRequest<Res> {
     var limit: Int?
     var timeout: Int?
     
+    public convenience init(offset: Int, limit: Int, timeout: Int) {
+        self.init(JSON: [:])!
+        self.offset = offset
+        self.limit = limit
+        self.timeout = timeout
+    }
+    
     override public func mapping(map: Map) {
         super.mapping(map)
         

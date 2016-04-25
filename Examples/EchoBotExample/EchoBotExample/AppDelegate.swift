@@ -18,7 +18,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, TBotDelegate {
 
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        bot.registerDelegate(self)
+        bot.delegate = self
         do {
             try bot.start()
         } catch {
@@ -37,6 +37,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, TBotDelegate {
         }
     }
     
+    func didFailReceivingUpdates<Res: TBEntity>(fromBot bot: TBot, response: TBResponse<Res>?) {
+        print("Receiving updates failure: \(response?.error)")
+    }
+    
     private func respondToMessage(message: TBMessage) {
         guard let text = message.text else {
             return
@@ -51,7 +55,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, TBotDelegate {
         } catch TBError.BadRequest {
             print("Bad request")
         } catch {
-            
+            print("")
         }
     }
 }
