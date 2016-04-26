@@ -40,10 +40,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, TBotDelegate {
     }
     
     private func respondToMessage(message: TBMessage) {
-        guard let text = message.text else {
-            return
-        }
-        let replyHTML = "<i>\(text)</i>\n<a href='http://www.instml.com/'>Instaml</a>";
+        let text = message.text
+        let contact = message.contact
+        let location = message.location
+        
+        let replyText = text ?? contact.map{"\($0.phoneNumber), \($0.firstName)"} ?? location?.debugDescription ?? "Hello!"
+        let replyHTML = "<i>\(replyText)</i>\n<a href='http://www.instml.com/'>Instaml</a>";
+        
         let keyboard = TBReplyKeyboardMarkup(keyboard: [
             [TBKeyboardButton(text: "Contact", requestContact: true)],
             [TBKeyboardButton(text: "Location", requestLocation: true)]

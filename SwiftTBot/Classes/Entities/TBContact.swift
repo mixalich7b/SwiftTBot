@@ -9,8 +9,8 @@
 import ObjectMapper
 
 public class TBContact: TBEntity {
-    public var phoneNumber: String!
-    public var firstName: String!
+    public var phoneNumber: String = ""
+    public var firstName: String = ""
     public var lastName: String?
     public var userId: Int?
     

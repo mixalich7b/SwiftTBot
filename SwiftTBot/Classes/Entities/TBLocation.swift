@@ -8,9 +8,9 @@
 
 import ObjectMapper
 
-public class TBLocation: TBEntity {
-    public var longitude: Float!
-    public var latitude: Float!
+public class TBLocation: TBEntity, CustomDebugStringConvertible {
+    public var longitude: Float = 0
+    public var latitude: Float = 0
     
     override public func mapping(map: Map) {
         super.mapping(map)
@@ -18,4 +18,8 @@ public class TBLocation: TBEntity {
         longitude <- map["longitude"]
         latitude <- map["latitude"]
     }
+    
+    public var debugDescription: String { get {
+        return "lon: \(self.longitude), lat: \(self.latitude)"
+    }}
 }
