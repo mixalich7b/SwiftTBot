@@ -28,12 +28,12 @@ public class TBSendMessageRequest<Res: TBEntity, ReplyType where ReplyType: TBEn
     var replyToMessageId: Int?
     var replyMarkup: ReplyType?
     
-    required public init?(JSON: [String : AnyObject]) {
-        super.init(JSON: JSON)
+    override public init() {
+        super.init()
     }
     
     convenience public init(chatId: Int, text: String, replyMarkup: ReplyType, parseMode: TBSendMessageParseMode = .None) {
-        self.init(JSON: [:])!
+        self.init()
         self.chatId = chatId
         self.text = text
         self.parseMode = parseMode
@@ -41,7 +41,7 @@ public class TBSendMessageRequest<Res: TBEntity, ReplyType where ReplyType: TBEn
     }
     
     convenience public init(channelUsername: String, text: String, replyMarkup: ReplyType, parseMode: TBSendMessageParseMode = .None) {
-        self.init(JSON: [:])!
+        self.init()
         self.channelUsername = channelUsername
         self.text = text
         self.parseMode = parseMode
@@ -54,7 +54,7 @@ public class TBSendMessageRequest<Res: TBEntity, ReplyType where ReplyType: TBEn
         chatId <- map["chat_id"]
         channelUsername <- map["chat_id"]
         text <- map["text"]
-        parseMode <- (map["parse_mode"], EnumTransform<TBSendMessageParseMode>())
+        parseMode <- map["parse_mode"]
         disableWebPagePreview <- map["disable_web_page_preview"]
         disableNotification <- map["disable_notification"]
         replyToMessageId <- map["reply_to_message_id"]

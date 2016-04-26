@@ -17,9 +17,9 @@ public class TBRequest<Res: TBEntity>: Mappable {
     required public init?(_ map: Map) {
     }
     
-    required public init?(JSON: [String : AnyObject]) {
+    public func mapping(map: Map) {
     }
     
-    public func mapping(map: Map) {
+    public init() {
     }
 }

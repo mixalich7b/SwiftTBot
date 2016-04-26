@@ -27,9 +27,9 @@ public class TBot {
     }
     
     public func start(fallback:(TBError?) -> Void) {
-        let request = TBGetMeRequest()
+        let getMeRequest = TBGetMeRequest()
         do {
-            try self.sendRequest(request) {[weak self] (response) in
+            try self.sendRequest(getMeRequest) {[weak self] (response) in
                 if !response.isOk {
                     fallback(response.error)
                 } else {

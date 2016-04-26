@@ -27,7 +27,7 @@ public class TBChat: TBEntity {
         super.mapping(map)
         
         id <- map["id"]
-        type <- (map["type"], EnumTransform<TBChatType>())
+        type <- map["type"]
         
         title <- map["title"]
         username <- map["username"]

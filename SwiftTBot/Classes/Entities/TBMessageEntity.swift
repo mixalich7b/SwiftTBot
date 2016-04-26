@@ -30,7 +30,7 @@ public class TBMessageEntity: TBEntity {
     override public func mapping(map: Map) {
         super.mapping(map)
         
-        type <- (map["type"], EnumTransform<TBMessageEntityType>())
+        type <- map["type"]
         offset <- map["offset"]
         length <- map["length"]
         url <- map["url"]

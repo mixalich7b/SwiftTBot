@@ -6,7 +6,6 @@
 //  Copyright © 2016 mixalich7b. All rights reserved.
 //
 
-import Foundation
 import ObjectMapper
 
 public class TBEntity: Mappable {
@@ -14,5 +13,8 @@ public class TBEntity: Mappable {
     }
     
     public func mapping(map: Map) {
+    }
+    
+    public init(){
     }
 }

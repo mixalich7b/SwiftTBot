@@ -19,8 +19,11 @@ public class TBResponse<T: TBEntity>: Mappable {
         return value?.description
     })
     
+    public init() {
+    }
+    
     convenience init(isOk: Bool, responseEntities: [T]?, error: TBError?) {
-        self.init(JSON: [:])!
+        self.init()
         self.isOk = isOk
         self.responseEntities = responseEntities
         self.error = error

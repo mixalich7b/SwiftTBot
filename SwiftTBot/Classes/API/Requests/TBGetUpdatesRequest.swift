@@ -17,12 +17,12 @@ public class TBGetUpdatesRequest<Res: TBUpdate>: TBRequest<Res> {
     var limit: Int?
     var timeout: Int?
     
-    required public init?(JSON: [String : AnyObject]) {
-        super.init(JSON: JSON)
+    override public init() {
+        super.init()
     }
     
     public convenience init(offset: Int, limit: Int, timeout: Int) {
-        self.init(JSON: [:])!
+        self.init()
         self.offset = offset
         self.limit = limit
         self.timeout = timeout

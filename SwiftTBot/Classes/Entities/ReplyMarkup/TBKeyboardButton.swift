@@ -9,23 +9,23 @@
 import ObjectMapper
 
 public class TBKeyboardButton: TBEntity {
-    public var text: String! = ""
+    public var text: String = ""
     public var requestContact: Bool?
     public var requestLocation: Bool?
     
     public convenience init(text: String) {
-        self.init(JSON: [:])!
+        self.init()
         self.text = text
     }
     
     public convenience init(text: String, requestContact: Bool?) {
-        self.init(JSON: [:])!
+        self.init()
         self.text = text
         self.requestContact = requestContact
     }
     
     public convenience init(text: String, requestLocation: Bool?) {
-        self.init(JSON: [:])!
+        self.init()
         self.text = text
         self.requestLocation = requestLocation
     }

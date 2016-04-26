@@ -10,7 +10,4 @@ public protocol TBReplyMarkupProtocol {
 }
 
 public class TBReplyMarkupNone: TBEntity, TBReplyMarkupProtocol {
-    public convenience init() {
-        self.init(JSON: [:])!
-    }
 }
