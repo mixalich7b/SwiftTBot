@@ -9,6 +9,7 @@
 import ObjectMapper
 
 public enum TBChatType: String {
+    case Undefined = "undefined"
     case Private = "private"
     case Group = "group"
     case Supergroup = "supergroup"
@@ -16,8 +17,8 @@ public enum TBChatType: String {
 }
 
 public class TBChat: TBEntity {
-    public var id: Int!
-    public var type: TBChatType!
+    public var id: Int = 0
+    public var type: TBChatType = .Undefined
     public var title: String?
     public var username: String?
     public var firstName: String?
@@ -34,4 +35,7 @@ public class TBChat: TBEntity {
         firstName <- map["first_name"]
         lastName <- map["last_name"]
     }
+}
+
+public class TBUndefinedChat: TBChat {
 }

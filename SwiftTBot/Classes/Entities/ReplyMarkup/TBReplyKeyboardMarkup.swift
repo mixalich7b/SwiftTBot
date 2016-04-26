@@ -9,7 +9,7 @@
 import ObjectMapper
 
 public class TBReplyKeyboardMarkup: TBEntity, TBReplyMarkupProtocol {
-    public var keyboard: [[TBKeyboardButton]]! = [[]]
+    public var keyboard: [[TBKeyboardButton]] = [[]]
     public var resizeKeyboard: Bool?
     public var oneTimeKeyboard: Bool?
     public var selective: Bool?

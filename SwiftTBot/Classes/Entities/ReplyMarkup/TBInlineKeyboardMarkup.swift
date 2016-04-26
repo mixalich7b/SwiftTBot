@@ -9,7 +9,7 @@
 import ObjectMapper
 
 public class TBInlineKeyboardMarkup: TBEntity, TBReplyMarkupProtocol {
-    public var keyboard: [[TBInlineKeyboardButton]]!
+    public var keyboard: [[TBInlineKeyboardButton]] = [[]]
     
     override public func mapping(map: Map) {
         super.mapping(map)

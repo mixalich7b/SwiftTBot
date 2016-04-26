@@ -21,7 +21,7 @@ public class TBSendMessageRequest<Res: TBEntity, ReplyType where ReplyType: TBEn
     
     var chatId: Int?
     var channelUsername: String?
-    var text: String! = ""
+    var text: String = ""
     var parseMode: TBSendMessageParseMode?
     var disableWebPagePreview: Bool?
     var disableNotification: Bool?

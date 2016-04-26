@@ -9,8 +9,8 @@
 import ObjectMapper
 
 public class TBUser: TBEntity {
-    public var id: Int!
-    public var firstName: String!
+    public var id: Int = 0
+    public var firstName: String = ""
     public var lastName: String?
     public var username: String?
     

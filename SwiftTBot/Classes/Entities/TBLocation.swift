@@ -23,3 +23,6 @@ public class TBLocation: TBEntity, CustomDebugStringConvertible {
         return "lon: \(self.longitude), lat: \(self.latitude)"
     }}
 }
+
+public class TBUndefinedLocation: TBLocation {
+}

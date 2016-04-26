@@ -9,6 +9,7 @@
 import ObjectMapper
 
 public enum TBMessageEntityType: String {
+    case Undefined = "undefined"
     case Mention = "mention"
     case Hashtag = "hashtag"
     case BotCommand = "bot_command"
@@ -22,9 +23,9 @@ public enum TBMessageEntityType: String {
 }
 
 public class TBMessageEntity: TBEntity {
-    public var type: TBMessageEntityType!
-    public var offset: Int! // in UTF-16 code units
-    public var length: Int! // in UTF-16 code units
+    public var type: TBMessageEntityType = .Undefined
+    public var offset: Int = 0 // in UTF-16 code units
+    public var length: Int = 0 // in UTF-16 code units
     public var url: String?
     
     override public func mapping(map: Map) {
