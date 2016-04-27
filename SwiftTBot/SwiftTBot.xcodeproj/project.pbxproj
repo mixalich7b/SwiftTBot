@@ -10,6 +10,7 @@
 		0AD6F803CF62B3602147B1EC /* Pods_SwiftTBot_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CC514E375DB262532678049 /* Pods_SwiftTBot_iOS.framework */; };
 		24CE33F9E82C2FC304C0A599 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA22948E8B240050EE5F401F /* Pods.framework */; };
 		7A09E1FEA2D9AE435A328B43 /* Pods_SwiftTBot_OSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 837DB08E35DD7896850B8C44 /* Pods_SwiftTBot_OSX.framework */; };
+		B20AC1761CD026B000D5136D /* TBot+MessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20AC1751CD026B000D5136D /* TBot+MessageHandler.swift */; };
 		B21C17C21CCEADA9003516C2 /* TBUnixTimeTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21C17C11CCEADA9003516C2 /* TBUnixTimeTransform.swift */; };
 		B21C17C31CCEADA9003516C2 /* TBUnixTimeTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21C17C11CCEADA9003516C2 /* TBUnixTimeTransform.swift */; };
 		B21C17C51CCEAF0A003516C2 /* TBMessageEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21C17C41CCEAF0A003516C2 /* TBMessageEntity.swift */; };
@@ -100,6 +101,7 @@
 		728EC52D8BF437E8E3E837B9 /* Pods-SwiftTBot_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftTBot_iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftTBot_iOS/Pods-SwiftTBot_iOS.release.xcconfig"; sourceTree = "<group>"; };
 		837DB08E35DD7896850B8C44 /* Pods_SwiftTBot_OSX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftTBot_OSX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA22948E8B240050EE5F401F /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B20AC1751CD026B000D5136D /* TBot+MessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TBot+MessageHandler.swift"; sourceTree = "<group>"; };
 		B21C17C11CCEADA9003516C2 /* TBUnixTimeTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBUnixTimeTransform.swift; sourceTree = "<group>"; };
 		B21C17C41CCEAF0A003516C2 /* TBMessageEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBMessageEntity.swift; sourceTree = "<group>"; };
 		B21C17C71CCEB0C3003516C2 /* TBContact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBContact.swift; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 				B2C687631CC986A8006915B7 /* API */,
 				B2C687651CC986A8006915B7 /* Entities */,
 				B2C687661CC9871B006915B7 /* TBot.swift */,
+				B20AC1751CD026B000D5136D /* TBot+MessageHandler.swift */,
 				B2C687941CCABF72006915B7 /* TBotDelegate.swift */,
 				B2C687AD1CCD7E21006915B7 /* TBError.swift */,
 			);
@@ -624,6 +627,7 @@
 				B2C687861CC99CB2006915B7 /* TBGetUpdatesRequest.swift in Sources */,
 				B21C17CE1CCEB19A003516C2 /* TBVenue.swift in Sources */,
 				B21C17F31CCECA5D003516C2 /* TBInlineKeyboardMarkup.swift in Sources */,
+				B20AC1761CD026B000D5136D /* TBot+MessageHandler.swift in Sources */,
 				B21C17C21CCEADA9003516C2 /* TBUnixTimeTransform.swift in Sources */,
 				B2C687A71CCAFD63006915B7 /* TBRequest.swift in Sources */,
 			);

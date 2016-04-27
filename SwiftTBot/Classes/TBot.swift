@@ -8,11 +8,15 @@
 
 import ObjectMapper
 
+internal typealias TBMessageHandler = (TBMessage) -> ()
+
 public class TBot {
     private let token: String
     public private(set) var botUsername: String?
     
     weak public var delegate: TBotDelegate?
+    private var commandHandlers: [String: TBMessageHandler] = [:]
+    private let commandHandlersQueue = dispatch_queue_create("ru.mixalich7b.SwiftTBot.messageHandlers", DISPATCH_QUEUE_SERIAL)
     
     private let URLSession = NSURLSession(configuration: NSURLSessionConfiguration.ephemeralSessionConfiguration())
     private let responseProcessingQueue = dispatch_queue_create("ru.mixalich7b.SwiftTBot.response", DISPATCH_QUEUE_CONCURRENT)
@@ -49,6 +53,16 @@ public class TBot {
         self.isRunning = false
     }
     
+    internal func setHandler(handler: TBMessageHandler?, forCommand textCommand: String) {
+        dispatch_barrier_async(self.commandHandlersQueue) {
+            guard let handler = handler else {
+                self.commandHandlers.removeValueForKey(textCommand)
+                return
+            }
+            self.commandHandlers[textCommand] = handler
+        }
+    }
+    
     private func startPolling() {
         self.getUpdates {[weak self] in
             let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(3 * Double(NSEC_PER_SEC)))
@@ -75,10 +89,23 @@ public class TBot {
                     strongSelf.delegate?.didFailReceivingUpdates(fromBot: strongSelf, response: response)
                     return
                 }
-                let messages = updates.reduce([TBMessage](), combine: { (messages:[TBMessage], update) -> [TBMessage] in
+                let messages = updates.reduce([TBMessage](), combine: { (messages: [TBMessage], update) -> [TBMessage] in
                     strongSelf.lastUpdateId = max(update.id + 1, strongSelf.lastUpdateId)
                     return update.message.map{messages + [$0]} ?? messages
                 })
+                for message in messages {
+                    guard let text = message.text else {
+                        continue
+                    }
+                    dispatch_sync(strongSelf.commandHandlersQueue, {
+                        guard let handler = strongSelf.commandHandlers[text] else {
+                            return
+                        }
+                        dispatch_async(dispatch_get_main_queue(), { 
+                            handler(message)
+                        })
+                    })
+                }
                 strongSelf.delegate?.didReceiveMessages(messages, fromBot: strongSelf)
             }
         } catch {

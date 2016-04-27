@@ -18,7 +18,19 @@ class AppDelegate: NSObject, NSApplicationDelegate, TBotDelegate {
 
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        bot.delegate = self
+//        bot.delegate = self
+        bot.on("/start") { $1("Hello, \($0.from?.firstName ?? $0.chat.firstName ?? "")")}
+        bot.on("/info") {[weak self] (message, replyCallback) in
+            do {
+                try self?.bot.sendRequest(TBGetMeRequest(), completion: { (response) in
+                    if let username = response.responseEntities?.first?.username {
+                        replyCallback("\(username)\nhttps://telegram.me/\(username)")
+                    }
+                })
+            } catch {
+            }
+        }
+        
         bot.start { (error) in
             print("Bot haven't started, error: \(error)")
         }
