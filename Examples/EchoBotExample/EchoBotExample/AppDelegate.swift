@@ -19,8 +19,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, TBotDelegate {
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
 //        bot.delegate = self
-        bot.on("/start") { $1("Hello, \($0.from?.firstName ?? $0.chat.firstName ?? "")")}
-        bot.on("/info") {[weak self] (message, replyCallback) in
+        bot.on("/start") { "Hello, \($0.from?.firstName ?? $0.chat.firstName ?? "" )"}
+            .on("/test") { _ in "It's work"}
+            .on("/info") {[weak self] (message, replyCallback) in
             do {
                 try self?.bot.sendRequest(TBGetMeRequest(), completion: { (response) in
                     if let username = response.responseEntities?.first?.username {
