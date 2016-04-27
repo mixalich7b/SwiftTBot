@@ -9,14 +9,17 @@
 import ObjectMapper
 
 internal typealias TBMessageHandler = (TBMessage) -> ()
+internal typealias TBRegexMessageHandler = (TBMessage, NSRange) -> ()
 
 public class TBot {
     private let token: String
     public private(set) var botUsername: String?
     
     weak public var delegate: TBotDelegate?
-    private var commandHandlers: [String: TBMessageHandler] = [:]
-    private let commandHandlersQueue = dispatch_queue_create("ru.mixalich7b.SwiftTBot.messageHandlers", DISPATCH_QUEUE_SERIAL)
+    private var textCommandHandlers: [String: TBMessageHandler] = [:]
+    private let textCommandHandlersQueue = dispatch_queue_create("ru.mixalich7b.SwiftTBot.messageHandlers", DISPATCH_QUEUE_SERIAL)
+    private var regexCommandHandlers: [NSRegularExpression: TBRegexMessageHandler] = [:]
+    private let regexCommandHandlersQueue = dispatch_queue_create("ru.mixalich7b.SwiftTBot.regexHandlers", DISPATCH_QUEUE_SERIAL)
     
     private let URLSession = NSURLSession(configuration: NSURLSessionConfiguration.ephemeralSessionConfiguration())
     private let responseProcessingQueue = dispatch_queue_create("ru.mixalich7b.SwiftTBot.response", DISPATCH_QUEUE_CONCURRENT)
@@ -54,12 +57,22 @@ public class TBot {
     }
     
     internal func setHandler(handler: TBMessageHandler?, forCommand textCommand: String) {
-        dispatch_barrier_async(self.commandHandlersQueue) {
+        dispatch_barrier_async(self.textCommandHandlersQueue) {
             guard let handler = handler else {
-                self.commandHandlers.removeValueForKey(textCommand)
+                self.textCommandHandlers.removeValueForKey(textCommand)
                 return
             }
-            self.commandHandlers[textCommand] = handler
+            self.textCommandHandlers[textCommand] = handler
+        }
+    }
+    
+    internal func setHandler(handler: TBRegexMessageHandler?, forRegexCommand regexCommand: NSRegularExpression) {
+        dispatch_barrier_async(self.regexCommandHandlersQueue) {
+            guard let handler = handler else {
+                self.regexCommandHandlers.removeValueForKey(regexCommand)
+                return
+            }
+            self.regexCommandHandlers[regexCommand] = handler
         }
     }
     
@@ -97,13 +110,24 @@ public class TBot {
                     guard let text = message.text else {
                         continue
                     }
-                    dispatch_sync(strongSelf.commandHandlersQueue, {
-                        guard let handler = strongSelf.commandHandlers[text] else {
+                    dispatch_sync(strongSelf.textCommandHandlersQueue, {
+                        guard let handler = strongSelf.textCommandHandlers[text] else {
                             return
                         }
                         dispatch_async(dispatch_get_main_queue(), { 
                             handler(message)
                         })
+                    })
+                    dispatch_sync(strongSelf.regexCommandHandlersQueue, {
+                        for (regex, handler) in strongSelf.regexCommandHandlers {
+                            let textRange = NSMakeRange(0, text.lengthOfBytesUsingEncoding(NSUTF8StringEncoding))
+                            let matchRange = regex.rangeOfFirstMatchInString(text, options: NSMatchingOptions.ReportCompletion, range: textRange)
+                            if matchRange.location != NSNotFound {
+                                dispatch_async(dispatch_get_main_queue(), {
+                                    handler(message, matchRange)
+                                })
+                            }
+                        }
                     })
                 }
                 strongSelf.delegate?.didReceiveMessages(messages, fromBot: strongSelf)

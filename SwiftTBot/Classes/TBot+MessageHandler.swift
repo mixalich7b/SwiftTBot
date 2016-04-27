@@ -34,6 +34,19 @@ public extension TBot {
         return self
     }
     
+    public func on(regex: NSRegularExpression, handler: (TBMessage, NSRange, TBTextReplyCallback) -> Void) -> Self {
+        self.setHandler({ (message, range) in
+            handler(message, range, {[weak self] (replyString) in
+                guard let strongSelf = self else {
+                    return
+                }
+                let request = TBSendMessageRequest(chatId: message.chat.id, text: replyString, replyMarkup: TBReplyMarkupNone())
+                strongSelf.sendMessage(request)
+            })
+        }, forRegexCommand: regex)
+        return self
+    }
+    
     private func sendMessage<ReplyType where ReplyType: TBEntity, ReplyType: TBReplyMarkupProtocol>(request: TBSendMessageRequest<TBEntity, ReplyType>) {
         do {
             try self.sendRequest(request, completion: { (response) in

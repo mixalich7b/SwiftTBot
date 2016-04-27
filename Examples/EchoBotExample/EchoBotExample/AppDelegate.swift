@@ -22,15 +22,33 @@ class AppDelegate: NSObject, NSApplicationDelegate, TBotDelegate {
         bot.on("/start") { "Hello, \($0.from?.firstName ?? $0.chat.firstName ?? "" )"}
             .on("/test") { _ in "It's work"}
             .on("/info") {[weak self] (message, replyCallback) in
-            do {
-                try self?.bot.sendRequest(TBGetMeRequest(), completion: { (response) in
-                    if let username = response.responseEntities?.first?.username {
-                        replyCallback("\(username)\nhttps://telegram.me/\(username)")
-                    }
-                })
-            } catch {
+                do {
+                    try self?.bot.sendRequest(TBGetMeRequest(), completion: { (response) in
+                        if let username = response.responseEntities?.first?.username {
+                            replyCallback("\(username)\nhttps://telegram.me/\(username)")
+                        }
+                    })
+                } catch {
+                }
             }
+        
+        let awesomeCommandRegex = try! NSRegularExpression(pattern: "^(\\/awesomeCommand)\\s([0-9]{1,4})\\s([0-9]{1,4})$", options: NSRegularExpressionOptions(rawValue: 0))
+        let argsParsingRegex = try! NSRegularExpression(pattern: "([0-9]{1,4})", options: NSRegularExpressionOptions(rawValue: 0))
+        bot.on(awesomeCommandRegex) { (message, matchRange, callback) in
+            guard let text = message.text else {
+                return
+            }
+            
+            let replyString = argsParsingRegex.matchesInString(text, options: NSMatchingOptions.ReportProgress, range: matchRange)
+                .reduce("Args: ", combine: { (reply, checkResult) -> String in
+                    let startOffset = checkResult.range.location
+                    let endOffset = checkResult.range.location + checkResult.range.length
+                    let range = text.startIndex.advancedBy(startOffset)..<text.startIndex.advancedBy(endOffset)
+                    return reply + text.substringWithRange(range) + ", "
+                })
+            callback(replyString)
         }
+        
         
         bot.start { (error) in
             print("Bot haven't started, error: \(error)")
