@@ -8,7 +8,7 @@
 
 import ObjectMapper
 
-public class TBInputLocationMessageContent: TBEntity, TBInputMessageContentProtocol {
+public class TBInputLocationMessageContent: TBInputMessageContent {
     public var longitude: Float = 0
     public var latitude: Float = 0
     

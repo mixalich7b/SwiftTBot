@@ -45,8 +45,8 @@
 		B28783C71CD864770010DA33 /* TBUnixTimeTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28783C31CD864770010DA33 /* TBUnixTimeTransform.swift */; };
 		B28783C91CD868F70010DA33 /* TBInlineQueryResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28783C81CD868F70010DA33 /* TBInlineQueryResult.swift */; };
 		B28783CA1CD868F70010DA33 /* TBInlineQueryResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28783C81CD868F70010DA33 /* TBInlineQueryResult.swift */; };
-		B28783CC1CD8B4210010DA33 /* TBInputMessageContentProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28783CB1CD8B4210010DA33 /* TBInputMessageContentProtocol.swift */; };
-		B28783CD1CD8B4210010DA33 /* TBInputMessageContentProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28783CB1CD8B4210010DA33 /* TBInputMessageContentProtocol.swift */; };
+		B28783CC1CD8B4210010DA33 /* TBInputMessageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28783CB1CD8B4210010DA33 /* TBInputMessageContent.swift */; };
+		B28783CD1CD8B4210010DA33 /* TBInputMessageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28783CB1CD8B4210010DA33 /* TBInputMessageContent.swift */; };
 		B28783CF1CD8B46B0010DA33 /* TBInputTextMessageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28783CE1CD8B46B0010DA33 /* TBInputTextMessageContent.swift */; };
 		B28783D01CD8B46B0010DA33 /* TBInputTextMessageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28783CE1CD8B46B0010DA33 /* TBInputTextMessageContent.swift */; };
 		B28783D21CD9459C0010DA33 /* TBInlineQueryResultArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28783D11CD9459C0010DA33 /* TBInlineQueryResultArticle.swift */; };
@@ -133,7 +133,7 @@
 		B28783C21CD864770010DA33 /* TBLimitedLengthTextTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBLimitedLengthTextTransform.swift; sourceTree = "<group>"; };
 		B28783C31CD864770010DA33 /* TBUnixTimeTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBUnixTimeTransform.swift; sourceTree = "<group>"; };
 		B28783C81CD868F70010DA33 /* TBInlineQueryResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBInlineQueryResult.swift; sourceTree = "<group>"; };
-		B28783CB1CD8B4210010DA33 /* TBInputMessageContentProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBInputMessageContentProtocol.swift; sourceTree = "<group>"; };
+		B28783CB1CD8B4210010DA33 /* TBInputMessageContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBInputMessageContent.swift; sourceTree = "<group>"; };
 		B28783CE1CD8B46B0010DA33 /* TBInputTextMessageContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBInputTextMessageContent.swift; sourceTree = "<group>"; };
 		B28783D11CD9459C0010DA33 /* TBInlineQueryResultArticle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBInlineQueryResultArticle.swift; sourceTree = "<group>"; };
 		B28783D41CD94CA70010DA33 /* TBInputLocationMessageContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBInputLocationMessageContent.swift; sourceTree = "<group>"; };
@@ -245,7 +245,7 @@
 				B28783BB1CD85C0F0010DA33 /* TBInlineQuery.swift */,
 				B28783C81CD868F70010DA33 /* TBInlineQueryResult.swift */,
 				B28783D11CD9459C0010DA33 /* TBInlineQueryResultArticle.swift */,
-				B28783CB1CD8B4210010DA33 /* TBInputMessageContentProtocol.swift */,
+				B28783CB1CD8B4210010DA33 /* TBInputMessageContent.swift */,
 				B28783CE1CD8B46B0010DA33 /* TBInputTextMessageContent.swift */,
 				B28783D41CD94CA70010DA33 /* TBInputLocationMessageContent.swift */,
 			);
@@ -673,7 +673,7 @@
 				B28783C41CD864770010DA33 /* TBLimitedLengthTextTransform.swift in Sources */,
 				B2C6876A1CC99191006915B7 /* TBEntity.swift in Sources */,
 				B2C6876D1CC992A6006915B7 /* TBMessage.swift in Sources */,
-				B28783CC1CD8B4210010DA33 /* TBInputMessageContentProtocol.swift in Sources */,
+				B28783CC1CD8B4210010DA33 /* TBInputMessageContent.swift in Sources */,
 				B21C17FC1CCECA7A003516C2 /* TBReplyMarkupProtocol.swift in Sources */,
 				B2C687861CC99CB2006915B7 /* TBGetUpdatesRequest.swift in Sources */,
 				B21C17CE1CCEB19A003516C2 /* TBVenue.swift in Sources */,
@@ -703,7 +703,7 @@
 				B21C17F01CCECA5D003516C2 /* TBForceReply.swift in Sources */,
 				B2C687841CC99C92006915B7 /* TBGetMeRequest.swift in Sources */,
 				B21C17CC1CCEB155003516C2 /* TBLocation.swift in Sources */,
-				B28783CD1CD8B4210010DA33 /* TBInputMessageContentProtocol.swift in Sources */,
+				B28783CD1CD8B4210010DA33 /* TBInputMessageContent.swift in Sources */,
 				B2C6879F1CCAE0DF006915B7 /* TBotDelegate.swift in Sources */,
 				B2C687681CC9871B006915B7 /* TBot.swift in Sources */,
 				B2C687AF1CCD7E21006915B7 /* TBError.swift in Sources */,

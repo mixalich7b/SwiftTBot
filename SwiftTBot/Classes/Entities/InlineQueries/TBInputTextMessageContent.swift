@@ -8,7 +8,7 @@
 
 import ObjectMapper
 
-public class TBInputTextMessageContent: TBEntity, TBInputMessageContentProtocol {
+public class TBInputTextMessageContent: TBInputMessageContent {
     public var messageText: String = "" // 1-4096 characters
     public var parseMode: TBSendMessageParseMode?
     public var disableWebPagePreview: Bool?

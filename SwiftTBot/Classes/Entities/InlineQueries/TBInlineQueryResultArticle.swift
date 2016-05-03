@@ -9,9 +9,10 @@
 import ObjectMapper
 
 public class TBInlineQueryResultArticle: TBInlineQueryResult {
-    override internal func getType() -> String {
+    override internal var type: String {get {
         return "article"
-    }
+    } set {
+    }}
     
     public var title: String = ""
     public var url: String?
@@ -41,7 +42,7 @@ public class TBInlineQueryResultArticle: TBInlineQueryResult {
         super.init(map)
     }
     
-    convenience public init(id: String, title: String, inputMessageContent: TBInputMessageContentProtocol) {
+    convenience public init(id: String, title: String, inputMessageContent: TBInputMessageContent) {
         self.init(id: id)
         self.title = title
         self.inputMessageContent = inputMessageContent

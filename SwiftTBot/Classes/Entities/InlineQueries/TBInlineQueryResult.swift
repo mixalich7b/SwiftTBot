@@ -9,12 +9,12 @@
 import ObjectMapper
 
 public class TBInlineQueryResult: TBEntity {
-    internal func getType() -> String {
+    internal var type: String {get {
         fatalError("Must be overriden")
-    }
-    
+    } set {
+    }}
     public var id: String = "" // 1-64 Bytes
-    public var inputMessageContent: TBInputMessageContentProtocol?
+    public var inputMessageContent: TBInputMessageContent?
     public var replyMarkup: TBInlineKeyboardMarkup?
     
     
@@ -22,6 +22,7 @@ public class TBInlineQueryResult: TBEntity {
         super.mapping(map)
         
         id <- (map["id"], TBLimitedLengthTextTransform(maxLength: 64))
+        type <- map["type"]
         inputMessageContent <- map["input_message_content"]
         replyMarkup <- map["reply_markup"]
     }

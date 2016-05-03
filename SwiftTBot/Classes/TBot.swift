@@ -102,39 +102,50 @@ public class TBot {
                     strongSelf.delegate?.didFailReceivingUpdates(fromBot: strongSelf, response: response)
                     return
                 }
-                let messages = updates.reduce([TBMessage](), combine: { (messages: [TBMessage], update) -> [TBMessage] in
+                let (messages, inlineQueries) = updates.reduce(([TBMessage](), [TBInlineQuery]()), combine: { (result: ([TBMessage], [TBInlineQuery]), update) -> ([TBMessage], [TBInlineQuery]) in
                     strongSelf.lastUpdateId = max(update.id + 1, strongSelf.lastUpdateId)
-                    return update.message.map{messages + [$0]} ?? messages
+                    let messages = update.message.map{result.0 + [$0]} ?? result.0
+                    let inlineQueries = update.inlineQuery.map{result.1 + [$0]} ?? result.1
+                    return (messages, inlineQueries)
                 })
-                for message in messages {
-                    guard let text = message.text else {
-                        continue
-                    }
-                    dispatch_sync(strongSelf.textCommandHandlersQueue, {
-                        guard let handler = strongSelf.textCommandHandlers[text] else {
-                            return
-                        }
-                        dispatch_async(dispatch_get_main_queue(), { 
-                            handler(message)
-                        })
-                    })
-                    dispatch_sync(strongSelf.regexCommandHandlersQueue, {
-                        for (regex, handler) in strongSelf.regexCommandHandlers {
-                            let textRange = NSMakeRange(0, text.lengthOfBytesUsingEncoding(NSUTF8StringEncoding))
-                            let matchRange = regex.rangeOfFirstMatchInString(text, options: NSMatchingOptions.ReportCompletion, range: textRange)
-                            if matchRange.location != NSNotFound {
-                                dispatch_async(dispatch_get_main_queue(), {
-                                    handler(message, matchRange)
-                                })
-                            }
-                        }
-                    })
-                }
-                strongSelf.delegate?.didReceiveMessages(messages, fromBot: strongSelf)
+                strongSelf.handleMessages(messages)
+                strongSelf.handleInlineQueries(inlineQueries)
             }
         } catch {
             self.delegate?.didFailReceivingUpdates(fromBot: self, response: nil)
         }
+    }
+    
+    private func handleMessages(messages: [TBMessage]) {
+        for message in messages {
+            guard let text = message.text else {
+                continue
+            }
+            dispatch_sync(self.textCommandHandlersQueue, {
+                guard let handler = self.textCommandHandlers[text] else {
+                    return
+                }
+                dispatch_async(dispatch_get_main_queue(), {
+                    handler(message)
+                })
+            })
+            dispatch_sync(self.regexCommandHandlersQueue, {
+                for (regex, handler) in self.regexCommandHandlers {
+                    let textRange = NSMakeRange(0, text.lengthOfBytesUsingEncoding(NSUTF8StringEncoding))
+                    let matchRange = regex.rangeOfFirstMatchInString(text, options: NSMatchingOptions.ReportCompletion, range: textRange)
+                    if matchRange.location != NSNotFound {
+                        dispatch_async(dispatch_get_main_queue(), {
+                            handler(message, matchRange)
+                        })
+                    }
+                }
+            })
+        }
+        self.delegate?.didReceiveMessages(messages, fromBot: self)
+    }
+    
+    private func handleInlineQueries(inlineQueries: [TBInlineQuery]) {
+        self.delegate?.didReceiveInlineQueries(inlineQueries, fromBot: self)
     }
     
     public func sendRequest<ResponseEntity: TBEntity>(request: TBRequest<ResponseEntity>, completion: (TBResponse<ResponseEntity>) -> Void) throws {
