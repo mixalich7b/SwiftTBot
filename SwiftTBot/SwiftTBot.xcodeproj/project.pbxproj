@@ -45,14 +45,11 @@
 		B28783C71CD864770010DA33 /* TBUnixTimeTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28783C31CD864770010DA33 /* TBUnixTimeTransform.swift */; };
 		B28783C91CD868F70010DA33 /* TBInlineQueryResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28783C81CD868F70010DA33 /* TBInlineQueryResult.swift */; };
 		B28783CA1CD868F70010DA33 /* TBInlineQueryResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28783C81CD868F70010DA33 /* TBInlineQueryResult.swift */; };
-		B28783CC1CD8B4210010DA33 /* TBInputMessageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28783CB1CD8B4210010DA33 /* TBInputMessageContent.swift */; };
-		B28783CD1CD8B4210010DA33 /* TBInputMessageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28783CB1CD8B4210010DA33 /* TBInputMessageContent.swift */; };
-		B28783CF1CD8B46B0010DA33 /* TBInputTextMessageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28783CE1CD8B46B0010DA33 /* TBInputTextMessageContent.swift */; };
-		B28783D01CD8B46B0010DA33 /* TBInputTextMessageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28783CE1CD8B46B0010DA33 /* TBInputTextMessageContent.swift */; };
 		B28783D21CD9459C0010DA33 /* TBInlineQueryResultArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28783D11CD9459C0010DA33 /* TBInlineQueryResultArticle.swift */; };
 		B28783D31CD9459C0010DA33 /* TBInlineQueryResultArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28783D11CD9459C0010DA33 /* TBInlineQueryResultArticle.swift */; };
-		B28783D51CD94CA70010DA33 /* TBInputLocationMessageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28783D41CD94CA70010DA33 /* TBInputLocationMessageContent.swift */; };
-		B28783D61CD94CA70010DA33 /* TBInputLocationMessageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28783D41CD94CA70010DA33 /* TBInputLocationMessageContent.swift */; };
+		B2AE6B1C1CD96C14004A4F5C /* TBInputLocationMessageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AE6B191CD96C14004A4F5C /* TBInputLocationMessageContent.swift */; };
+		B2AE6B1D1CD96C14004A4F5C /* TBInputMessageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AE6B1A1CD96C14004A4F5C /* TBInputMessageContent.swift */; };
+		B2AE6B1E1CD96C14004A4F5C /* TBInputTextMessageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AE6B1B1CD96C14004A4F5C /* TBInputTextMessageContent.swift */; };
 		B2C6872E1CC97BB4006915B7 /* SwiftTBot.h in Headers */ = {isa = PBXBuildFile; fileRef = B2C6872D1CC97BB4006915B7 /* SwiftTBot.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B2C687351CC97BB4006915B7 /* SwiftTBot_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2C6872A1CC97BB4006915B7 /* SwiftTBot_iOS.framework */; };
 		B2C6873A1CC97BB4006915B7 /* SwiftTBotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C687391CC97BB4006915B7 /* SwiftTBotTests.swift */; };
@@ -133,10 +130,10 @@
 		B28783C21CD864770010DA33 /* TBLimitedLengthTextTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBLimitedLengthTextTransform.swift; sourceTree = "<group>"; };
 		B28783C31CD864770010DA33 /* TBUnixTimeTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBUnixTimeTransform.swift; sourceTree = "<group>"; };
 		B28783C81CD868F70010DA33 /* TBInlineQueryResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBInlineQueryResult.swift; sourceTree = "<group>"; };
-		B28783CB1CD8B4210010DA33 /* TBInputMessageContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBInputMessageContent.swift; sourceTree = "<group>"; };
-		B28783CE1CD8B46B0010DA33 /* TBInputTextMessageContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBInputTextMessageContent.swift; sourceTree = "<group>"; };
 		B28783D11CD9459C0010DA33 /* TBInlineQueryResultArticle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBInlineQueryResultArticle.swift; sourceTree = "<group>"; };
-		B28783D41CD94CA70010DA33 /* TBInputLocationMessageContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBInputLocationMessageContent.swift; sourceTree = "<group>"; };
+		B2AE6B191CD96C14004A4F5C /* TBInputLocationMessageContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBInputLocationMessageContent.swift; sourceTree = "<group>"; };
+		B2AE6B1A1CD96C14004A4F5C /* TBInputMessageContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBInputMessageContent.swift; sourceTree = "<group>"; };
+		B2AE6B1B1CD96C14004A4F5C /* TBInputTextMessageContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBInputTextMessageContent.swift; sourceTree = "<group>"; };
 		B2C6872A1CC97BB4006915B7 /* SwiftTBot_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftTBot_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2C6872D1CC97BB4006915B7 /* SwiftTBot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftTBot.h; sourceTree = "<group>"; };
 		B2C6872F1CC97BB4006915B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -242,12 +239,10 @@
 		B28783BA1CD85BEC0010DA33 /* InlineQueries */ = {
 			isa = PBXGroup;
 			children = (
+				B2AE6B181CD96C14004A4F5C /* MessageContent */,
 				B28783BB1CD85C0F0010DA33 /* TBInlineQuery.swift */,
 				B28783C81CD868F70010DA33 /* TBInlineQueryResult.swift */,
 				B28783D11CD9459C0010DA33 /* TBInlineQueryResultArticle.swift */,
-				B28783CB1CD8B4210010DA33 /* TBInputMessageContent.swift */,
-				B28783CE1CD8B46B0010DA33 /* TBInputTextMessageContent.swift */,
-				B28783D41CD94CA70010DA33 /* TBInputLocationMessageContent.swift */,
 			);
 			path = InlineQueries;
 			sourceTree = "<group>";
@@ -258,6 +253,16 @@
 				B28783BF1CD85DF30010DA33 /* TBAnswerInlineQueryRequest.swift */,
 			);
 			path = InlineQueries;
+			sourceTree = "<group>";
+		};
+		B2AE6B181CD96C14004A4F5C /* MessageContent */ = {
+			isa = PBXGroup;
+			children = (
+				B2AE6B1A1CD96C14004A4F5C /* TBInputMessageContent.swift */,
+				B2AE6B191CD96C14004A4F5C /* TBInputLocationMessageContent.swift */,
+				B2AE6B1B1CD96C14004A4F5C /* TBInputTextMessageContent.swift */,
+			);
+			path = MessageContent;
 			sourceTree = "<group>";
 		};
 		B2C687201CC97BB4006915B7 = {
@@ -648,13 +653,13 @@
 				B2C6878C1CC99FBA006915B7 /* TBSendMessageRequest.swift in Sources */,
 				B21C17F91CCECA5D003516C2 /* TBReplyKeyboardMarkup.swift in Sources */,
 				B21C17D11CCEB212003516C2 /* TBFile.swift in Sources */,
-				B28783CF1CD8B46B0010DA33 /* TBInputTextMessageContent.swift in Sources */,
+				B2AE6B1C1CD96C14004A4F5C /* TBInputLocationMessageContent.swift in Sources */,
 				B21C17EF1CCECA5D003516C2 /* TBForceReply.swift in Sources */,
 				B2C687831CC99C92006915B7 /* TBGetMeRequest.swift in Sources */,
 				B21C17CB1CCEB155003516C2 /* TBLocation.swift in Sources */,
+				B2AE6B1D1CD96C14004A4F5C /* TBInputMessageContent.swift in Sources */,
 				B2C687671CC9871B006915B7 /* TBot.swift in Sources */,
 				B2C687891CC99E4A006915B7 /* TBNetworkRequestFabric.swift in Sources */,
-				B28783D51CD94CA70010DA33 /* TBInputLocationMessageContent.swift in Sources */,
 				B2C687AE1CCD7E21006915B7 /* TBError.swift in Sources */,
 				B2C687751CC99892006915B7 /* TBChat.swift in Sources */,
 				B21C17F11CCECA5D003516C2 /* TBInlineKeyboardButton.swift in Sources */,
@@ -673,12 +678,12 @@
 				B28783C41CD864770010DA33 /* TBLimitedLengthTextTransform.swift in Sources */,
 				B2C6876A1CC99191006915B7 /* TBEntity.swift in Sources */,
 				B2C6876D1CC992A6006915B7 /* TBMessage.swift in Sources */,
-				B28783CC1CD8B4210010DA33 /* TBInputMessageContent.swift in Sources */,
 				B21C17FC1CCECA7A003516C2 /* TBReplyMarkupProtocol.swift in Sources */,
 				B2C687861CC99CB2006915B7 /* TBGetUpdatesRequest.swift in Sources */,
 				B21C17CE1CCEB19A003516C2 /* TBVenue.swift in Sources */,
 				B21C17F31CCECA5D003516C2 /* TBInlineKeyboardMarkup.swift in Sources */,
 				B20AC1761CD026B000D5136D /* TBot+MessageHandler.swift in Sources */,
+				B2AE6B1E1CD96C14004A4F5C /* TBInputTextMessageContent.swift in Sources */,
 				B28783C91CD868F70010DA33 /* TBInlineQueryResult.swift in Sources */,
 				B2C687A71CCAFD63006915B7 /* TBRequest.swift in Sources */,
 			);
@@ -698,18 +703,15 @@
 			files = (
 				B2C6878D1CC99FBA006915B7 /* TBSendMessageRequest.swift in Sources */,
 				B21C17FA1CCECA5D003516C2 /* TBReplyKeyboardMarkup.swift in Sources */,
-				B28783D61CD94CA70010DA33 /* TBInputLocationMessageContent.swift in Sources */,
 				B21C17D21CCEB212003516C2 /* TBFile.swift in Sources */,
 				B21C17F01CCECA5D003516C2 /* TBForceReply.swift in Sources */,
 				B2C687841CC99C92006915B7 /* TBGetMeRequest.swift in Sources */,
 				B21C17CC1CCEB155003516C2 /* TBLocation.swift in Sources */,
-				B28783CD1CD8B4210010DA33 /* TBInputMessageContent.swift in Sources */,
 				B2C6879F1CCAE0DF006915B7 /* TBotDelegate.swift in Sources */,
 				B2C687681CC9871B006915B7 /* TBot.swift in Sources */,
 				B2C687AF1CCD7E21006915B7 /* TBError.swift in Sources */,
 				B2C6878A1CC99E4A006915B7 /* TBNetworkRequestFabric.swift in Sources */,
 				B21C17F21CCECA5D003516C2 /* TBInlineKeyboardButton.swift in Sources */,
-				B28783D01CD8B46B0010DA33 /* TBInputTextMessageContent.swift in Sources */,
 				B2C687761CC99892006915B7 /* TBChat.swift in Sources */,
 				B2C6877E1CC99B95006915B7 /* TBUpdate.swift in Sources */,
 				B28783CA1CD868F70010DA33 /* TBInlineQueryResult.swift in Sources */,

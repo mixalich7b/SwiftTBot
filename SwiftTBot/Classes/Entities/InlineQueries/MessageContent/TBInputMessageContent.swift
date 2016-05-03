@@ -8,5 +8,6 @@
 
 import ObjectMapper
 
+// Use subclasses instead
 public class TBInputMessageContent : TBEntity {
 }
