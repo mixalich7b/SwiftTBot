@@ -9,7 +9,7 @@
 import ObjectMapper
 
 public class TBMessage: TBEntity {
-    public var id: Int = 0
+    public var id: Int = -1
     public var from: TBUser?
     public var date: NSDate = NSDate()
     public var chat: TBChat = TBUndefinedChat()

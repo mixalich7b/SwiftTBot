@@ -15,6 +15,6 @@ public class TBEntity: Mappable {
     public func mapping(map: Map) {
     }
     
-    public init(){
+    public init() {
     }
 }

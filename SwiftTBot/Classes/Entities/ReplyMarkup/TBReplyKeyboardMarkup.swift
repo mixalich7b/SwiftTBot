@@ -14,7 +14,7 @@ public class TBReplyKeyboardMarkup: TBEntity, TBReplyMarkupProtocol {
     public var oneTimeKeyboard: Bool?
     public var selective: Bool?
     
-    public convenience init(keyboard: [[TBKeyboardButton]]) {
+    convenience public init(keyboard: [[TBKeyboardButton]]) {
         self.init()
         self.keyboard = keyboard
     }

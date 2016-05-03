@@ -10,8 +10,7 @@ import ObjectMapper
 
 public class TBRequest<Res: TBEntity>: Mappable {
     internal func getMethod() -> String {
-        assert(false, "Must be overriden")
-        return ""
+        fatalError("Must be overriden")
     }
     
     required public init?(_ map: Map) {

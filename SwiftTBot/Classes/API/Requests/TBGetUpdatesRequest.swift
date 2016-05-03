@@ -21,7 +21,7 @@ public class TBGetUpdatesRequest<Res: TBUpdate>: TBRequest<Res> {
         super.init()
     }
     
-    public convenience init(offset: Int, limit: Int, timeout: Int) {
+    convenience public init(offset: Int, limit: Int, timeout: Int) {
         self.init()
         self.offset = offset
         self.limit = limit

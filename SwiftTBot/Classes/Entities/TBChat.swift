@@ -17,7 +17,7 @@ public enum TBChatType: String {
 }
 
 public class TBChat: TBEntity {
-    public var id: Int = 0
+    public var id: Int = -1
     public var type: TBChatType = .Undefined
     public var title: String?
     public var username: String?

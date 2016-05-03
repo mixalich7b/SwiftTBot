@@ -24,8 +24,8 @@ public enum TBMessageEntityType: String {
 
 public class TBMessageEntity: TBEntity {
     public var type: TBMessageEntityType = .Undefined
-    public var offset: Int = 0 // in UTF-16 code units
-    public var length: Int = 0 // in UTF-16 code units
+    public var offset: Int = -1 // in UTF-16 code units
+    public var length: Int = -1 // in UTF-16 code units
     public var url: String?
     
     override public func mapping(map: Map) {

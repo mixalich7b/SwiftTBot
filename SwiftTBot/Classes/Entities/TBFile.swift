@@ -10,7 +10,7 @@ import ObjectMapper
 
 public class TBFile: TBEntity {
     public var fileId: String = ""
-    public var fileSize: Int = 0
+    public var fileSize: Int = -1
     public var filePath: String?
     
     override public func mapping(map: Map) {
