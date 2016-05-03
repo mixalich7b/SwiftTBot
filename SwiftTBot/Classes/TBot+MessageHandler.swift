@@ -6,10 +6,13 @@
 //  Copyright © 2016 mixalich7b. All rights reserved.
 //
 
-public typealias TBTextReplyCallback = String -> Void;
+import Foundation
+
+public typealias TBTextReplyClosure = String -> Void;
 
 public extension TBot {
-    public func on(command: String, handler: (TBMessage, TBTextReplyCallback) -> Void) -> Self {
+    // Async reply
+    public func on(command: String, handler: (TBMessage, TBTextReplyClosure) -> Void) -> Self {
         self.setHandler({ (message) in
             handler(message, {[weak self] (replyString) in
                 guard let strongSelf = self else {
@@ -22,6 +25,7 @@ public extension TBot {
         return self
     }
     
+    // Sync reply
     public func on(command: String, handler: TBMessage -> String) -> Self {
         self.setHandler({[weak self] (message) in
             let replyString = handler(message)
@@ -34,7 +38,8 @@ public extension TBot {
         return self
     }
     
-    public func on(regex: NSRegularExpression, handler: (TBMessage, NSRange, TBTextReplyCallback) -> Void) -> Self {
+    // Regex based matching. Async reply
+    public func on(regex: NSRegularExpression, handler: (TBMessage, NSRange, TBTextReplyClosure) -> Void) -> Self {
         self.setHandler({ (message, range) in
             handler(message, range, {[weak self] (replyString) in
                 guard let strongSelf = self else {

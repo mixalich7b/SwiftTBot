@@ -8,17 +8,17 @@
 
 import ObjectMapper
 
-internal typealias TBMessageHandler = (TBMessage) -> ()
-internal typealias TBRegexMessageHandler = (TBMessage, NSRange) -> ()
+internal typealias TBMessageHandlerClosure = (TBMessage) -> ()
+internal typealias TBRegexMessageHandlerClosure = (TBMessage, NSRange) -> ()
 
 public class TBot {
     private let token: String
     public private(set) var botUsername: String?
     
     weak public var delegate: TBotDelegate?
-    private var textCommandHandlers: [String: TBMessageHandler] = [:]
+    private var textCommandHandlers: [String: TBMessageHandlerClosure] = [:]
     private let textCommandHandlersQueue = dispatch_queue_create("ru.mixalich7b.SwiftTBot.messageHandlers", DISPATCH_QUEUE_SERIAL)
-    private var regexCommandHandlers: [NSRegularExpression: TBRegexMessageHandler] = [:]
+    private var regexCommandHandlers: [NSRegularExpression: TBRegexMessageHandlerClosure] = [:]
     private let regexCommandHandlersQueue = dispatch_queue_create("ru.mixalich7b.SwiftTBot.regexHandlers", DISPATCH_QUEUE_SERIAL)
     
     private let URLSession = NSURLSession(configuration: NSURLSessionConfiguration.ephemeralSessionConfiguration())
@@ -56,7 +56,7 @@ public class TBot {
         self.isRunning = false
     }
     
-    internal func setHandler(handler: TBMessageHandler?, forCommand textCommand: String) {
+    internal func setHandler(handler: TBMessageHandlerClosure?, forCommand textCommand: String) {
         dispatch_barrier_async(self.textCommandHandlersQueue) {
             guard let handler = handler else {
                 self.textCommandHandlers.removeValueForKey(textCommand)
@@ -66,7 +66,7 @@ public class TBot {
         }
     }
     
-    internal func setHandler(handler: TBRegexMessageHandler?, forRegexCommand regexCommand: NSRegularExpression) {
+    internal func setHandler(handler: TBRegexMessageHandlerClosure?, forRegexCommand regexCommand: NSRegularExpression) {
         dispatch_barrier_async(self.regexCommandHandlersQueue) {
             guard let handler = handler else {
                 self.regexCommandHandlers.removeValueForKey(regexCommand)

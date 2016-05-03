@@ -40,11 +40,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, TBotDelegate {
             }
             
             let replyString = argsParsingRegex.matchesInString(text, options: NSMatchingOptions.ReportProgress, range: matchRange)
-                .reduce("Args: ", combine: { (reply, checkResult) -> String in
+                .reduce("Args: ", combine: { (replyText, checkResult) -> String in
                     let startOffset = checkResult.range.location
                     let endOffset = checkResult.range.location + checkResult.range.length
                     let range = text.startIndex.advancedBy(startOffset)..<text.startIndex.advancedBy(endOffset)
-                    return reply + text.substringWithRange(range) + ", "
+                    return replyText + text.substringWithRange(range) + ", "
                 })
             callback(replyString)
         }
