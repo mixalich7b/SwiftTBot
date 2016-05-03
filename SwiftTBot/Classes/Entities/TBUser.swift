@@ -9,7 +9,7 @@
 import ObjectMapper
 
 public class TBUser: TBEntity {
-    public var id: Int = 0
+    public var id: Int = -1
     public var firstName: String = ""
     public var lastName: String?
     public var username: String?
@@ -23,4 +23,7 @@ public class TBUser: TBEntity {
         firstName <- map["first_name"]
         lastName <- map["last_name"]
     }
+}
+
+public class TBUndefinedUser: TBUser {
 }
