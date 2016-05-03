@@ -18,7 +18,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, TBotDelegate {
 
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-//        bot.delegate = self
+        bot.delegate = self
         bot.on("/start") { "Hello, \($0.from?.firstName ?? $0.chat.firstName ?? "" )"}
             .on("/test") { _ in "It's work"}
             .on("/info") {[weak self] (message, replyCallback) in
@@ -61,8 +61,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, TBotDelegate {
     
     // MARK: TBotDelegate
     func didReceiveMessages(messages: [TBMessage], fromBot bot: TBot) -> Void {
-        for message in messages {
-            self.respondToMessage(message)
+        for _ in messages {
+//            self.respondToMessage(message)
+        }
+    }
+    
+    func didReceiveInlineQueries(inlineQueries: [TBInlineQuery], fromBot bot: TBot) -> Void {
+        for inlineQuery in inlineQueries {
+            self.respondToInlineQuery(inlineQuery)
         }
     }
     
@@ -87,6 +93,28 @@ class AppDelegate: NSObject, NSApplicationDelegate, TBotDelegate {
         let echoRequest = TBSendMessageRequest(chatId: message.chat.id, text: replyHTML, replyMarkup: keyboard, parseMode: .HTML)
         do {
             try self.bot.sendRequest(echoRequest, completion: { (response) in
+                if !response.isOk {
+                    print("API error: \(response.error?.description)")
+                }
+            })
+        } catch TBError.BadRequest {
+            print("Bad request")
+        } catch {
+            print("")
+        }
+    }
+    
+    private func respondToInlineQuery(inlineQuery: TBInlineQuery) {
+        let article1 = TBInlineQueryResultArticle(id: "\(arc4random_uniform(1000))", title: "Test title", inputMessageContent: TBInputTextMessageContent(messageText: "Test text"))
+        article1.url = "google.com"
+        let article2 = TBInlineQueryResultArticle(id: "\(arc4random_uniform(1000))", title: "Awesome article", inputMessageContent: TBInputLocationMessageContent(longitude: 98.292905, latitude: 7.817627))
+        article2.url = "vk.com"
+        let article3 = TBInlineQueryResultArticle(id: "\(arc4random_uniform(1000))", title: "Echo result", inputMessageContent: TBInputTextMessageContent(messageText: inlineQuery.query))
+        article3.url = "youtube.com"
+        article3.description = "\(inlineQuery.query), \(inlineQuery.offset)"
+        let answerInlineRequest = TBAnswerInlineQueryRequest(id: inlineQuery.id, results: [article1, article2, article3], switchPMText: "Go PM", switchPMParameter: "/info")
+        do {
+            try self.bot.sendRequest(answerInlineRequest, completion: { (response) in
                 if !response.isOk {
                     print("API error: \(response.error?.description)")
                 }
