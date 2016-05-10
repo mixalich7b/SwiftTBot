@@ -84,6 +84,8 @@
 		B2C687A81CCAFD63006915B7 /* TBRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C687A61CCAFD63006915B7 /* TBRequest.swift */; };
 		B2C687AE1CCD7E21006915B7 /* TBError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C687AD1CCD7E21006915B7 /* TBError.swift */; };
 		B2C687AF1CCD7E21006915B7 /* TBError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C687AD1CCD7E21006915B7 /* TBError.swift */; };
+		B2D329811CDD199F00648FB0 /* TBot+InlineMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D329801CDD199F00648FB0 /* TBot+InlineMessageHandler.swift */; };
+		B2D329821CDD199F00648FB0 /* TBot+InlineMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D329801CDD199F00648FB0 /* TBot+InlineMessageHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -161,6 +163,7 @@
 		B2C687A31CCAED72006915B7 /* TBResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBResponse.swift; sourceTree = "<group>"; };
 		B2C687A61CCAFD63006915B7 /* TBRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBRequest.swift; sourceTree = "<group>"; };
 		B2C687AD1CCD7E21006915B7 /* TBError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBError.swift; sourceTree = "<group>"; };
+		B2D329801CDD199F00648FB0 /* TBot+InlineMessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TBot+InlineMessageHandler.swift"; sourceTree = "<group>"; };
 		D21BDBE5DFA9F1D94037D033 /* Pods-SwiftTBot_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftTBot_iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftTBot_iOS/Pods-SwiftTBot_iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		D6607C87805D3F974A6E5ED6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EB6ABF20681CB11A0AD421BC /* Pods-SwiftTBot-OSX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftTBot-OSX.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftTBot-OSX/Pods-SwiftTBot-OSX.release.xcconfig"; sourceTree = "<group>"; };
@@ -335,6 +338,7 @@
 				B2C687651CC986A8006915B7 /* Entities */,
 				B2C687661CC9871B006915B7 /* TBot.swift */,
 				B20AC1751CD026B000D5136D /* TBot+MessageHandler.swift */,
+				B2D329801CDD199F00648FB0 /* TBot+InlineMessageHandler.swift */,
 				B2C687941CCABF72006915B7 /* TBotDelegate.swift */,
 				B2C687AD1CCD7E21006915B7 /* TBError.swift */,
 			);
@@ -682,6 +686,7 @@
 				B2C687861CC99CB2006915B7 /* TBGetUpdatesRequest.swift in Sources */,
 				B21C17CE1CCEB19A003516C2 /* TBVenue.swift in Sources */,
 				B21C17F31CCECA5D003516C2 /* TBInlineKeyboardMarkup.swift in Sources */,
+				B2D329811CDD199F00648FB0 /* TBot+InlineMessageHandler.swift in Sources */,
 				B20AC1761CD026B000D5136D /* TBot+MessageHandler.swift in Sources */,
 				B2AE6B1E1CD96C14004A4F5C /* TBInputTextMessageContent.swift in Sources */,
 				B28783C91CD868F70010DA33 /* TBInlineQueryResult.swift in Sources */,
@@ -720,6 +725,7 @@
 				B2C6877B1CC99AE0006915B7 /* TBUser.swift in Sources */,
 				B21C17F81CCECA5D003516C2 /* TBReplyKeyboardHide.swift in Sources */,
 				B2C687A51CCAED73006915B7 /* TBResponse.swift in Sources */,
+				B2D329821CDD199F00648FB0 /* TBot+InlineMessageHandler.swift in Sources */,
 				B28783C51CD864770010DA33 /* TBLimitedLengthTextTransform.swift in Sources */,
 				B21C17C91CCEB0C3003516C2 /* TBContact.swift in Sources */,
 				B21C17F61CCECA5D003516C2 /* TBKeyboardButton.swift in Sources */,

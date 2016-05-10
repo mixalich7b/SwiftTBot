@@ -38,15 +38,15 @@ public class TBAnswerInlineQueryRequest<Res: TBEntity>: TBRequest<Res> {
         super.init()
     }
     
-    convenience public init(id: String, results: [TBInlineQueryResult]) {
+    convenience public init(inlineRequestId: String, results: [TBInlineQueryResult]) {
         self.init()
-        self.id = id
+        self.id = inlineRequestId
         self.results = results
     }
     
-    convenience public init(id: String, results: [TBInlineQueryResult], switchPMText: String, switchPMParameter: String) {
+    convenience public init(inlineRequestId: String, results: [TBInlineQueryResult], switchPMText: String, switchPMParameter: String) {
         self.init()
-        self.id = id
+        self.id = inlineRequestId
         self.results = results
         self.switchPMText = switchPMText
         self.switchPMParameter = switchPMParameter

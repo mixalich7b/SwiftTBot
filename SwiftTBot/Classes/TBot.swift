@@ -11,6 +11,8 @@ import ObjectMapper
 internal typealias TBMessageHandlerClosure = (TBMessage) -> ()
 internal typealias TBRegexMessageHandlerClosure = (TBMessage, NSRange) -> ()
 
+internal typealias TBInlineQueryHandlerClosure = (TBInlineQuery, NSRange) -> ()
+
 public class TBot {
     private let token: String
     public private(set) var botUsername: String?
@@ -20,6 +22,9 @@ public class TBot {
     private let textCommandHandlersQueue = dispatch_queue_create("ru.mixalich7b.SwiftTBot.messageHandlers", DISPATCH_QUEUE_SERIAL)
     private var regexCommandHandlers: [NSRegularExpression: TBRegexMessageHandlerClosure] = [:]
     private let regexCommandHandlersQueue = dispatch_queue_create("ru.mixalich7b.SwiftTBot.regexHandlers", DISPATCH_QUEUE_SERIAL)
+    
+    private var inlineQueryHandlers: [NSRegularExpression: TBInlineQueryHandlerClosure] = [:]
+    private let inlineQueryHandlersQueue = dispatch_queue_create("ru.mixalich7b.SwiftTBot.inlineHandlers", DISPATCH_QUEUE_SERIAL)
     
     private let URLSession = NSURLSession(configuration: NSURLSessionConfiguration.ephemeralSessionConfiguration())
     private let responseProcessingQueue = dispatch_queue_create("ru.mixalich7b.SwiftTBot.response", DISPATCH_QUEUE_CONCURRENT)
@@ -73,6 +78,16 @@ public class TBot {
                 return
             }
             self.regexCommandHandlers[regexCommand] = handler
+        }
+    }
+    
+    internal func setHandler(handler: TBInlineQueryHandlerClosure?, forInlineQueryRegex inlineQueryRegex: NSRegularExpression) {
+        dispatch_barrier_async(self.inlineQueryHandlersQueue) {
+            guard let handler = handler else {
+                self.inlineQueryHandlers.removeValueForKey(inlineQueryRegex)
+                return
+            }
+            self.inlineQueryHandlers[inlineQueryRegex] = handler
         }
     }
     
@@ -145,6 +160,19 @@ public class TBot {
     }
     
     private func handleInlineQueries(inlineQueries: [TBInlineQuery]) {
+        for inlineQuery in inlineQueries {
+            dispatch_sync(self.inlineQueryHandlersQueue, {
+                for (regex, handler) in self.inlineQueryHandlers {
+                    let textRange = NSMakeRange(0, inlineQuery.text.lengthOfBytesUsingEncoding(NSUTF8StringEncoding))
+                    let matchRange = regex.rangeOfFirstMatchInString(inlineQuery.text, options: NSMatchingOptions.ReportCompletion, range: textRange)
+                    if matchRange.location != NSNotFound {
+                        dispatch_async(dispatch_get_main_queue(), {
+                            handler(inlineQuery, matchRange)
+                        })
+                    }
+                }
+            })
+        }
         self.delegate?.didReceiveInlineQueries(inlineQueries, fromBot: self)
     }
     

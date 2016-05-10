@@ -15,11 +15,8 @@ public extension TBot {
     public func on(command: String, handler: (TBMessage, TBTextReplyClosure) -> Void) -> Self {
         self.setHandler({ (message) in
             handler(message, {[weak self] (replyString) in
-                guard let strongSelf = self else {
-                    return
-                }
                 let request = TBSendMessageRequest(chatId: message.chat.id, text: replyString, replyMarkup: TBReplyMarkupNone())
-                strongSelf.sendMessage(request)
+                self?.sendMessage(request)
             })
         }, forCommand: command)
         return self
@@ -29,11 +26,8 @@ public extension TBot {
     public func on(command: String, handler: TBMessage -> String) -> Self {
         self.setHandler({[weak self] (message) in
             let replyString = handler(message)
-            guard let strongSelf = self else {
-                return
-            }
             let request = TBSendMessageRequest(chatId: message.chat.id, text: replyString, replyMarkup: TBReplyMarkupNone())
-            strongSelf.sendMessage(request)
+            self?.sendMessage(request)
         }, forCommand: command)
         return self
     }
@@ -42,11 +36,8 @@ public extension TBot {
     public func on(regex: NSRegularExpression, handler: (TBMessage, NSRange, TBTextReplyClosure) -> Void) -> Self {
         self.setHandler({ (message, range) in
             handler(message, range, {[weak self] (replyString) in
-                guard let strongSelf = self else {
-                    return
-                }
                 let request = TBSendMessageRequest(chatId: message.chat.id, text: replyString, replyMarkup: TBReplyMarkupNone())
-                strongSelf.sendMessage(request)
+                self?.sendMessage(request)
             })
         }, forRegexCommand: regex)
         return self

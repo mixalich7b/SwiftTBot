@@ -11,6 +11,11 @@ import ObjectMapper
 public class TBInlineKeyboardMarkup: TBEntity, TBReplyMarkupProtocol {
     public var keyboard: [[TBInlineKeyboardButton]] = [[]]
     
+    convenience public init(buttons: [[TBInlineKeyboardButton]]) {
+        self.init()
+        self.keyboard = buttons
+    }
+    
     override public func mapping(map: Map) {
         super.mapping(map)
         

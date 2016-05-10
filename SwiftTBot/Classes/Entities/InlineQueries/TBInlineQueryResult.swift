@@ -15,7 +15,7 @@ public class TBInlineQueryResult: TBEntity {
     }}
     public var id: String = "" // 1-64 Bytes
     public var inputMessageContent: TBInputMessageContent?
-    public var replyMarkup: TBInlineKeyboardMarkup?
+    public var replyKeyboardMarkup: TBInlineKeyboardMarkup?
     
     
     override public func mapping(map: Map) {
@@ -24,7 +24,7 @@ public class TBInlineQueryResult: TBEntity {
         id <- (map["id"], TBLimitedLengthTextTransform(maxLength: 64))
         type <- map["type"]
         inputMessageContent <- map["input_message_content"]
-        replyMarkup <- map["reply_markup"]
+        replyKeyboardMarkup <- map["reply_markup"]
     }
     
     internal init(id: String) {

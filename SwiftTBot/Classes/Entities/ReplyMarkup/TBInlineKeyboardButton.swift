@@ -9,7 +9,7 @@
 import ObjectMapper
 
 public class TBInlineKeyboardButton: TBEntity {
-    public var text: String = "undefined"
+    public var text: String = ""
     public var url: String?
     public var callbackData: String? // 1-64 bytes
     public var switchInlineQuery: String?

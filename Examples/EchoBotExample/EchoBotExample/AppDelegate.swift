@@ -32,7 +32,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, TBotDelegate {
                 }
             }
         
-        let awesomeCommandRegex = try! NSRegularExpression(pattern: "^(\\/awesomeCommand)\\s([0-9]{1,4})\\s([0-9]{1,4})$", options: NSRegularExpressionOptions(rawValue: 0))
+        let awesomeCommandRegex = try! NSRegularExpression(pattern: "^(\\/awesome)\\s([0-9]{1,4})\\s([0-9]{1,4})$", options: NSRegularExpressionOptions(rawValue: 0))
         let argsParsingRegex = try! NSRegularExpression(pattern: "([0-9]{1,4})", options: NSRegularExpressionOptions(rawValue: 0))
         bot.on(awesomeCommandRegex) { (message, matchRange, callback) in
             guard let text = message.text else {
@@ -47,6 +47,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, TBotDelegate {
                     return replyText + text.substringWithRange(range) + ", "
                 })
             callback(replyString)
+        }
+        
+        bot.onInline(awesomeCommandRegex) { (inlineQuery, range, callback) in
+            let article1 = TBInlineQueryResultArticle(id: "\(arc4random_uniform(1000))", title: "Test title", inputMessageContent: TBInputTextMessageContent(messageText: "Test text"))
+            article1.url = "google.com"
+            callback([article1])
         }
         
         
@@ -67,8 +73,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, TBotDelegate {
     }
     
     func didReceiveInlineQueries(inlineQueries: [TBInlineQuery], fromBot bot: TBot) -> Void {
-        for inlineQuery in inlineQueries {
-            self.respondToInlineQuery(inlineQuery)
+        for _ in inlineQueries {
+//            self.respondToInlineQuery(inlineQuery)
         }
     }
     
@@ -84,7 +90,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, TBotDelegate {
         let replyText = text ?? contact.map{"\($0.phoneNumber), \($0.firstName)"} ?? location?.debugDescription ?? "Hello!"
         let replyHTML = "<i>\(replyText)</i>\n<a href='http://www.instml.com/'>Instaml</a>";
         
-        let keyboard = TBReplyKeyboardMarkup(keyboard: [
+        let keyboard = TBReplyKeyboardMarkup(buttons: [
             [TBKeyboardButton(text: "Contact", requestContact: true)],
             [TBKeyboardButton(text: "Location", requestLocation: true)]
             ]);
@@ -109,10 +115,25 @@ class AppDelegate: NSObject, NSApplicationDelegate, TBotDelegate {
         article1.url = "google.com"
         let article2 = TBInlineQueryResultArticle(id: "\(arc4random_uniform(1000))", title: "Awesome article", inputMessageContent: TBInputLocationMessageContent(longitude: 98.292905, latitude: 7.817627))
         article2.url = "vk.com"
-        let article3 = TBInlineQueryResultArticle(id: "\(arc4random_uniform(1000))", title: "Echo result", inputMessageContent: TBInputTextMessageContent(messageText: inlineQuery.query))
+        let article3 = TBInlineQueryResultArticle(id: "\(arc4random_uniform(1000))", title: "Echo result", inputMessageContent: TBInputTextMessageContent(messageText: "Echo: \(inlineQuery.text)"))
         article3.url = "youtube.com"
-        article3.description = "\(inlineQuery.query), \(inlineQuery.offset)"
-        let answerInlineRequest = TBAnswerInlineQueryRequest(id: inlineQuery.id, results: [article1, article2, article3], switchPMText: "Go PM", switchPMParameter: "/info")
+        article3.description = "Echo: \(inlineQuery.text),\noffset: \(inlineQuery.offset)"
+        
+        let btn1 = TBInlineKeyboardButton()
+        btn1.text =  "Btn1"
+        btn1.url = "2ch.hk/b"
+        btn1.callbackData = "btn1"
+        let btn2 = TBInlineKeyboardButton()
+        btn2.text =  "Btn2"
+        btn2.callbackData = "btn2"
+        btn2.switchInlineQuery = "switch inline btn2"
+        let btn3 = TBInlineKeyboardButton()
+        btn3.text =  "Btn3"
+        btn3.callbackData = "btn3"
+        
+        article3.replyKeyboardMarkup = TBInlineKeyboardMarkup(buttons: [[btn1, btn2], [btn3]])
+        
+        let answerInlineRequest = TBAnswerInlineQueryRequest(inlineRequestId: inlineQuery.id, results: [article1, article2, article3], switchPMText: "Go PM", switchPMParameter: "/info")
         do {
             try self.bot.sendRequest(answerInlineRequest, completion: { (response) in
                 if !response.isOk {
