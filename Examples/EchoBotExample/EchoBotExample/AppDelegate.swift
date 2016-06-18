@@ -12,7 +12,7 @@ import SwiftTBot
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, TBotDelegate {
 
-    private let bot = TBot(token: "<your_token>")
+    private let bot = TBot(token: <your_token>)
     
     @IBOutlet weak var window: NSWindow!
 

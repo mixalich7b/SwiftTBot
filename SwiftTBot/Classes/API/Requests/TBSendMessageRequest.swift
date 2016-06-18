@@ -14,7 +14,7 @@ public enum TBSendMessageParseMode: String {
     case HTML = "HTML"
 }
 
-public class TBSendMessageRequest<Res: TBEntity, ReplyType where ReplyType: TBEntity, ReplyType: TBReplyMarkupProtocol>: TBRequest<Res> {
+public class TBSendMessageRequest<Res: TBMessage, ReplyType where ReplyType: TBEntity, ReplyType: TBReplyMarkupProtocol>: TBRequest<Res> {
     override internal func getMethod() -> String {
         return "sendMessage"
     }

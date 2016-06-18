@@ -1,5 +1,5 @@
 PODS:
-  - ObjectMapper (1.2.0)
+  - ObjectMapper (1.3.0)
   - SwiftTBot (0.1.0):
     - ObjectMapper (~> 1.2)
 
@@ -11,7 +11,7 @@ EXTERNAL SOURCES:
     :path: ../../
 
 SPEC CHECKSUMS:
-  ObjectMapper: b1e9c7c8a9f6400b72690c80072c131504caa66f
+  ObjectMapper: 4eb08a726e9791a93b2632049951b56a7c17e471
   SwiftTBot: 8eead3b6e077a1286db5dbdcd8691318f97d6303
 
 COCOAPODS: 0.39.0

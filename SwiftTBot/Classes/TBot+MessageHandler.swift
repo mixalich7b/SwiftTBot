@@ -43,7 +43,7 @@ public extension TBot {
         return self
     }
     
-    private func sendMessage<ReplyType where ReplyType: TBEntity, ReplyType: TBReplyMarkupProtocol>(request: TBSendMessageRequest<TBEntity, ReplyType>) {
+    private func sendMessage(request: TBSendMessageRequest<TBMessage, TBReplyMarkupNone>) {
         do {
             try self.sendRequest(request, completion: { (response) in
                 if !response.isOk {
