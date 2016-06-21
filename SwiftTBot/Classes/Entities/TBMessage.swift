@@ -25,7 +25,7 @@ public class TBMessage: TBEntity {
     public var pinnedMessage: TBMessage?
         
     override public func mapping(map: Map) {
-        super.mapping(map)
+        super.mapping(map: map)
         
         id <- map["message_id"]
         from <- map["from"]

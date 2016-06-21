@@ -7,6 +7,7 @@
 //
 
 import ObjectMapper
+import Foundation
 
 public class TBEntity: Mappable {
     required public init?(_ map: Map) {

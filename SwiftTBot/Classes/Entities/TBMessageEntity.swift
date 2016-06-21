@@ -29,7 +29,7 @@ public class TBMessageEntity: TBEntity {
     public var url: String?
     
     override public func mapping(map: Map) {
-        super.mapping(map)
+        super.mapping(map: map)
         
         type <- map["type"]
         offset <- map["offset"]

@@ -29,7 +29,7 @@ public class TBLimitedLengthTextTransform: TransformType {
         if let text = value {
             let buffer = text.utf8
             if buffer.count > self.maxLength {
-                return String(buffer[buffer.startIndex..<buffer.startIndex.advancedBy(self.maxLength)])
+                return String(buffer[buffer.startIndex..<buffer.startIndex.advancedBy(n: self.maxLength)])
             } else {
                 return text
             }
