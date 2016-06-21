@@ -15,7 +15,7 @@ public class TBVenue: TBEntity {
     public var foursquareId: String?
     
     override public func mapping(map: Map) {
-        super.mapping(map)
+        super.mapping(map: map)
         
         location <- map["location"]
         title <- map["title"]

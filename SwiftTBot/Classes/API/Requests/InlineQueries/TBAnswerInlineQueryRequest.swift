@@ -22,7 +22,7 @@ public class TBAnswerInlineQueryRequest<Res: TBEntity>: TBRequest<Res> {
     public var switchPMParameter: String?
     
     override public func mapping(map: Map) {
-        super.mapping(map)
+        super.mapping(map: map)
         
         id <- map["inline_query_id"]
         

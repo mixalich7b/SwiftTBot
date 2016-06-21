@@ -16,7 +16,7 @@ public class TBInlineQuery: TBEntity {
     public var offset: String = ""
     
     override public func mapping(map: Map) {
-        super.mapping(map)
+        super.mapping(map: map)
         
         id <- map["id"]
         

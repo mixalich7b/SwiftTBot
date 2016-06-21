@@ -19,7 +19,7 @@ public class TBInlineQueryResult: TBEntity {
     
     
     override public func mapping(map: Map) {
-        super.mapping(map)
+        super.mapping(map: map)
         
         id <- (map["id"], TBLimitedLengthTextTransform(maxLength: 64))
         type <- map["type"]

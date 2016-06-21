@@ -31,7 +31,7 @@ public class TBKeyboardButton: TBEntity {
     }
     
     override public func mapping(map: Map) {
-        super.mapping(map)
+        super.mapping(map: map)
         
         text <- map["text"]
         requestContact <- map["request_contact"]

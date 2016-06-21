@@ -8,36 +8,36 @@
 
 import Foundation
 
-public typealias TBTextReplyClosure = String -> Void;
+public typealias TBTextReplyClosure = (String) -> Void;
 
 public extension TBot {
     // Async reply
     public func on(command: String, handler: (TBMessage, TBTextReplyClosure) -> Void) -> Self {
-        self.setHandler({ (message) in
+        self.setHandler(handler: { (message) in
             handler(message, {[weak self] (replyString) in
                 let request = TBSendMessageRequest(chatId: message.chat.id, text: replyString, replyMarkup: TBReplyMarkupNone())
-                self?.sendMessage(request)
+                self?.sendMessage(request: request)
             })
         }, forCommand: command)
         return self
     }
     
     // Sync reply
-    public func on(command: String, handler: TBMessage -> String) -> Self {
-        self.setHandler({[weak self] (message) in
+    public func on(command: String, handler: (TBMessage) -> String) -> Self {
+        self.setHandler(handler: {[weak self] (message) in
             let replyString = handler(message)
             let request = TBSendMessageRequest(chatId: message.chat.id, text: replyString, replyMarkup: TBReplyMarkupNone())
-            self?.sendMessage(request)
+            self?.sendMessage(request: request)
         }, forCommand: command)
         return self
     }
     
     // Regex based matching. Async reply
-    public func on(regex: NSRegularExpression, handler: (TBMessage, NSRange, TBTextReplyClosure) -> Void) -> Self {
-        self.setHandler({ (message, range) in
+    public func on(regex: RegularExpression, handler: (TBMessage, NSRange, TBTextReplyClosure) -> Void) -> Self {
+        self.setHandler(handler: { (message, range) in
             handler(message, range, {[weak self] (replyString) in
                 let request = TBSendMessageRequest(chatId: message.chat.id, text: replyString, replyMarkup: TBReplyMarkupNone())
-                self?.sendMessage(request)
+                self?.sendMessage(request: request)
             })
         }, forRegexCommand: regex)
         return self
@@ -45,7 +45,7 @@ public extension TBot {
     
     private func sendMessage(request: TBSendMessageRequest<TBMessage, TBReplyMarkupNone>) {
         do {
-            try self.sendRequest(request, completion: { (response) in
+            try self.sendRequest(request: request, completion: { (response) in
                 if !response.isOk {
                     print("API error: \(response.error?.description)")
                 }

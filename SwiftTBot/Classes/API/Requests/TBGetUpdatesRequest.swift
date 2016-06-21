@@ -29,7 +29,7 @@ public class TBGetUpdatesRequest<Res: TBUpdate>: TBRequest<Res> {
     }
     
     override public func mapping(map: Map) {
-        super.mapping(map)
+        super.mapping(map: map)
         
         offset <- map["offset"]
         limit <- map["limit"]

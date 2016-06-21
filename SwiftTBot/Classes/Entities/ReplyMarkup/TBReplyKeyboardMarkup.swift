@@ -20,7 +20,7 @@ public class TBReplyKeyboardMarkup: TBEntity, TBReplyMarkupProtocol {
     }
     
     override public func mapping(map: Map) {
-        super.mapping(map)
+        super.mapping(map: map)
         
         keyboard <- map["keyboard"]
         resizeKeyboard <- map["resize_keyboard"]

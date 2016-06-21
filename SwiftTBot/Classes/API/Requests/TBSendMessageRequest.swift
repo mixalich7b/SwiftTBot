@@ -49,7 +49,7 @@ public class TBSendMessageRequest<Res: TBMessage, ReplyType where ReplyType: TBE
     }
     
     override public func mapping(map: Map) {
-        super.mapping(map)
+        super.mapping(map: map)
         
         chatId <- map["chat_id"]
         channelUsername <- map["chat_id"]

@@ -7,6 +7,7 @@
 //
 
 import ObjectMapper
+import Foundation
 
 public class TBUnixTimeTransform: TransformType {
     public typealias Object = NSDate
@@ -14,7 +15,7 @@ public class TBUnixTimeTransform: TransformType {
     
     public func transformFromJSON(value: AnyObject?) -> NSDate? {
         if let timestamp = value as? Int {
-            return NSDate(timeIntervalSince1970: NSTimeInterval(timestamp))
+            return NSDate(timeIntervalSince1970: TimeInterval(timestamp))
         }
         return nil
     }

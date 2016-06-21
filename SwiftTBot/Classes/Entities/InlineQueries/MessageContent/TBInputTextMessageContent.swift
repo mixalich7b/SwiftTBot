@@ -14,7 +14,7 @@ public class TBInputTextMessageContent: TBInputMessageContent {
     public var disableWebPagePreview: Bool?
     
     override public func mapping(map: Map) {
-        super.mapping(map)
+        super.mapping(map: map)
         
         messageText <- (map["message_text"], TBLimitedLengthTextTransform(maxLength: 4096))
         parseMode <- map["parse_mode"]

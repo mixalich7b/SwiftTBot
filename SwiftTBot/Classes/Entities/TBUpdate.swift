@@ -14,7 +14,7 @@ public class TBUpdate: TBEntity {
     public var inlineQuery: TBInlineQuery?
     
     override public func mapping(map: Map) {
-        super.mapping(map)
+        super.mapping(map: map)
         
         id <- map["update_id"]
         message <- map["message"]

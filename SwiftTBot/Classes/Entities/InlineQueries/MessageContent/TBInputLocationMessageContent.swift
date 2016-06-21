@@ -13,7 +13,7 @@ public class TBInputLocationMessageContent: TBInputMessageContent {
     public var latitude: Float = 0
     
     override public func mapping(map: Map) {
-        super.mapping(map)
+        super.mapping(map: map)
         
         longitude <- map["longitude"]
         latitude <- map["latitude"]

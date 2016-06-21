@@ -7,6 +7,7 @@
 //
 
 import ObjectMapper
+import Foundation
 
 internal typealias TBMessageHandlerClosure = (TBMessage) -> ()
 internal typealias TBRegexMessageHandlerClosure = (TBMessage, NSRange) -> ()
@@ -19,15 +20,15 @@ public class TBot {
     
     weak public var delegate: TBotDelegate?
     private var textCommandHandlers: [String: TBMessageHandlerClosure] = [:]
-    private let textCommandHandlersQueue = dispatch_queue_create("ru.mixalich7b.SwiftTBot.messageHandlers", DISPATCH_QUEUE_SERIAL)
-    private var regexCommandHandlers: [NSRegularExpression: TBRegexMessageHandlerClosure] = [:]
-    private let regexCommandHandlersQueue = dispatch_queue_create("ru.mixalich7b.SwiftTBot.regexHandlers", DISPATCH_QUEUE_SERIAL)
+    private let textCommandHandlersQueue = DispatchQueue(label: "ru.mixalich7b.SwiftTBot.messageHandlers", attributes: .serial)
+    private var regexCommandHandlers: [RegularExpression: TBRegexMessageHandlerClosure] = [:]
+    private let regexCommandHandlersQueue = DispatchQueue(label: "ru.mixalich7b.SwiftTBot.regexHandlers", attributes: .serial)
     
-    private var inlineQueryHandlers: [NSRegularExpression: TBInlineQueryHandlerClosure] = [:]
-    private let inlineQueryHandlersQueue = dispatch_queue_create("ru.mixalich7b.SwiftTBot.inlineHandlers", DISPATCH_QUEUE_SERIAL)
+    private var inlineQueryHandlers: [RegularExpression: TBInlineQueryHandlerClosure] = [:]
+    private let inlineQueryHandlersQueue = DispatchQueue(label: "ru.mixalich7b.SwiftTBot.inlineHandlers", attributes: .serial)
     
-    private let URLSession = NSURLSession(configuration: NSURLSessionConfiguration.ephemeralSessionConfiguration())
-    private let responseProcessingQueue = dispatch_queue_create("ru.mixalich7b.SwiftTBot.response", DISPATCH_QUEUE_CONCURRENT)
+    private let urlSession = URLSession(configuration: URLSessionConfiguration.ephemeral())
+    private let responseProcessingQueue = DispatchQueue(label: "ru.mixalich7b.SwiftTBot.response", attributes: .concurrent)
     
     private var lastUpdateId = 0
     private let timeout = 10
@@ -41,7 +42,7 @@ public class TBot {
     public func start(fallback:(TBError?) -> Void) {
         let getMeRequest = TBGetMeRequest()
         do {
-            try self.sendRequest(getMeRequest) {[weak self] (response) in
+            try self.sendRequest(request: getMeRequest) {[weak self] (response) in
                 if !response.isOk {
                     fallback(response.error)
                 } else {
@@ -62,29 +63,29 @@ public class TBot {
     }
     
     internal func setHandler(handler: TBMessageHandlerClosure?, forCommand textCommand: String) {
-        dispatch_barrier_async(self.textCommandHandlersQueue) {
+        self.textCommandHandlersQueue.async(group: .none, qos: .default, flags: .barrier) { 
             guard let handler = handler else {
-                self.textCommandHandlers.removeValueForKey(textCommand)
+                self.textCommandHandlers.removeValue(forKey: textCommand)
                 return
             }
             self.textCommandHandlers[textCommand] = handler
         }
     }
     
-    internal func setHandler(handler: TBRegexMessageHandlerClosure?, forRegexCommand regexCommand: NSRegularExpression) {
-        dispatch_barrier_async(self.regexCommandHandlersQueue) {
+    internal func setHandler(handler: TBRegexMessageHandlerClosure?, forRegexCommand regexCommand: RegularExpression) {
+        self.regexCommandHandlersQueue.async(group: .none, qos: .default, flags: .barrier) {
             guard let handler = handler else {
-                self.regexCommandHandlers.removeValueForKey(regexCommand)
+                self.regexCommandHandlers.removeValue(forKey: regexCommand)
                 return
             }
             self.regexCommandHandlers[regexCommand] = handler
         }
     }
     
-    internal func setHandler(handler: TBInlineQueryHandlerClosure?, forInlineQueryRegex inlineQueryRegex: NSRegularExpression) {
-        dispatch_barrier_async(self.inlineQueryHandlersQueue) {
+    internal func setHandler(handler: TBInlineQueryHandlerClosure?, forInlineQueryRegex inlineQueryRegex: RegularExpression) {
+        self.inlineQueryHandlersQueue.async(group: .none, qos: .default, flags: .barrier) {
             guard let handler = handler else {
-                self.inlineQueryHandlers.removeValueForKey(inlineQueryRegex)
+                self.inlineQueryHandlers.removeValue(forKey: inlineQueryRegex)
                 return
             }
             self.inlineQueryHandlers[inlineQueryRegex] = handler
@@ -93,22 +94,21 @@ public class TBot {
     
     private func startPolling() {
         self.getUpdates {[weak self] in
-            let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(3 * Double(NSEC_PER_SEC)))
-            dispatch_after(delayTime, dispatch_get_main_queue()) {
+            DispatchQueue.main.after(when: .now() + 3, execute: { 
                 guard let strongSelf = self else {
                     return
                 }
                 if strongSelf.isRunning {
                     strongSelf.startPolling()
                 }
-            }
+            })
         }
     }
     
     private func getUpdates(completion: () -> ()) {
         let updateRequest = TBGetUpdatesRequest(offset: self.lastUpdateId, limit: 100, timeout: timeout)
         do {
-            try self.sendRequest(updateRequest) {[weak self] (response) in
+            try self.sendRequest(request: updateRequest) {[weak self] (response) in
                 guard let strongSelf = self else {
                     return
                 }
@@ -123,8 +123,8 @@ public class TBot {
                     let inlineQueries = update.inlineQuery.map{result.1 + [$0]} ?? result.1
                     return (messages, inlineQueries)
                 })
-                strongSelf.handleMessages(messages)
-                strongSelf.handleInlineQueries(inlineQueries)
+                strongSelf.handleMessages(messages: messages)
+                strongSelf.handleInlineQueries(inlineQueries: inlineQueries)
             }
         } catch {
             self.delegate?.didFailReceivingUpdates(fromBot: self, response: nil)
@@ -136,91 +136,91 @@ public class TBot {
             guard let text = message.text else {
                 continue
             }
-            dispatch_sync(self.textCommandHandlersQueue, {
+            self.textCommandHandlersQueue.sync(execute: { 
                 guard let handler = self.textCommandHandlers[text] else {
                     return
                 }
-                dispatch_async(dispatch_get_main_queue(), {
+                DispatchQueue.main.async {
                     handler(message)
-                })
+                }
             })
-            dispatch_sync(self.regexCommandHandlersQueue, {
+            self.regexCommandHandlersQueue.sync(execute: { 
                 for (regex, handler) in self.regexCommandHandlers {
-                    let textRange = NSMakeRange(0, text.lengthOfBytesUsingEncoding(NSUTF8StringEncoding))
-                    let matchRange = regex.rangeOfFirstMatchInString(text, options: NSMatchingOptions.ReportCompletion, range: textRange)
+                    let textRange = NSMakeRange(0, text.lengthOfBytes(using: String.Encoding.utf8))
+                    let matchRange = regex.rangeOfFirstMatch(in: text, options: RegularExpression.MatchingOptions.reportCompletion, range: textRange)
                     if matchRange.location != NSNotFound {
-                        dispatch_async(dispatch_get_main_queue(), {
+                        DispatchQueue.main.async {
                             handler(message, matchRange)
-                        })
+                        }
                     }
                 }
             })
         }
-        self.delegate?.didReceiveMessages(messages, fromBot: self)
+        self.delegate?.didReceiveMessages(messages: messages, fromBot: self)
     }
     
     private func handleInlineQueries(inlineQueries: [TBInlineQuery]) {
         for inlineQuery in inlineQueries {
-            dispatch_sync(self.inlineQueryHandlersQueue, {
+            self.inlineQueryHandlersQueue.sync(execute: { 
                 for (regex, handler) in self.inlineQueryHandlers {
-                    let textRange = NSMakeRange(0, inlineQuery.text.lengthOfBytesUsingEncoding(NSUTF8StringEncoding))
-                    let matchRange = regex.rangeOfFirstMatchInString(inlineQuery.text, options: NSMatchingOptions.ReportCompletion, range: textRange)
+                    let textRange = NSMakeRange(0, inlineQuery.text.lengthOfBytes(using: String.Encoding.utf8))
+                    let matchRange = regex.rangeOfFirstMatch(in: inlineQuery.text, options: RegularExpression.MatchingOptions.reportCompletion, range: textRange)
                     if matchRange.location != NSNotFound {
-                        dispatch_async(dispatch_get_main_queue(), {
+                        DispatchQueue.main.async {
                             handler(inlineQuery, matchRange)
-                        })
+                        }
                     }
                 }
             })
         }
-        self.delegate?.didReceiveInlineQueries(inlineQueries, fromBot: self)
+        self.delegate?.didReceiveInlineQueries(inlineQueries: inlineQueries, fromBot: self)
     }
     
     public func sendRequest<ResponseEntity: TBEntity>(request: TBRequest<ResponseEntity>, completion: (TBResponse<ResponseEntity>) -> Void) throws {
-        guard let URLRequest = TBNetworkRequestFabric.networkRequestWithRequest(request, token: self.token) else {
+        guard let URLRequest = TBNetworkRequestFabric.networkRequestWithRequest(request: request, token: self.token) else {
             throw TBError.BadRequest
         }
-        let task = self.URLSession.dataTaskWithRequest(URLRequest) {[weak self] (data, requestResponse, requestError) in
+        let task = self.urlSession.dataTask(with: URLRequest) {[weak self] (data, requestResponse, requestError) in
             guard let strongSelf = self else {
                 return
             }
-            dispatch_async(strongSelf.responseProcessingQueue, { 
+            strongSelf.responseProcessingQueue.async(execute: { 
                 guard let responseData = data else {
                     let error = TBError.NetworkError(response: requestResponse, error: requestError)
-                    dispatch_async(dispatch_get_main_queue(), { 
-                        completion(TBResponse<ResponseEntity>(isOk: false, responseEntities: Optional.None, error: error))
-                    })
+                    DispatchQueue.main.async {
+                        completion(TBResponse<ResponseEntity>(isOk: false, responseEntities: Optional.none, error: error))
+                    }
                     return
                 }
                 let JSON: AnyObject?
                 do {
-                    try JSON = NSJSONSerialization.JSONObjectWithData(responseData, options: NSJSONReadingOptions(rawValue: 0))
+                    try JSON = JSONSerialization.jsonObject(with: responseData, options: JSONSerialization.ReadingOptions(rawValue: 0))
                 } catch {
-                    JSON = Optional.None
+                    JSON = Optional.none
                     let error = TBError.WrongResponseData(responseData: responseData, response: requestResponse, error: requestError)
-                    dispatch_async(dispatch_get_main_queue(), {
-                        completion(TBResponse<ResponseEntity>(isOk: false, responseEntities: Optional.None, error: error))
-                    })
+                    DispatchQueue.main.async {
+                        completion(TBResponse<ResponseEntity>(isOk: false, responseEntities: Optional.none, error: error))
+                    }
                     return
                 }
                 guard let responseDictionary = JSON as? Dictionary<String, AnyObject> else {
                     let error = TBError.WrongResponseData(responseData: responseData, response: requestResponse, error: requestError)
-                    dispatch_async(dispatch_get_main_queue(), {
-                        completion(TBResponse<ResponseEntity>(isOk: false, responseEntities: Optional.None, error: error))
-                    })
+                    DispatchQueue.main.async {
+                        completion(TBResponse<ResponseEntity>(isOk: false, responseEntities: Optional.none, error: error))
+                    }
                     return
                 }
                 
-                guard let APIResponse = Mapper<TBResponse<ResponseEntity>>().map(responseDictionary) else {
+                guard let APIResponse = Mapper<TBResponse<ResponseEntity>>().map(JSONDictionary: responseDictionary) else {
                     let error = TBError.ResponseParsingError(responseDictionary: responseDictionary, response: requestResponse, error: requestError)
-                    dispatch_async(dispatch_get_main_queue(), {
-                        completion(TBResponse<ResponseEntity>(isOk: false, responseEntities: Optional.None, error: error))
-                    })
+                    DispatchQueue.main.async {
+                        completion(TBResponse<ResponseEntity>(isOk: false, responseEntities: Optional.none, error: error))
+                    }
                     return
                 }
-                dispatch_async(dispatch_get_main_queue(), {
+                DispatchQueue.main.async {
                     completion(APIResponse)
-                })
+                }
             })
         }
         task.resume()

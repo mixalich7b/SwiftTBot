@@ -27,9 +27,8 @@ public class TBLimitedLengthTextTransform: TransformType {
     
     public func transformToJSON(value: String?) -> String? {
         if let text = value {
-            let buffer = text.utf8
-            if buffer.count > self.maxLength {
-                return String(buffer[buffer.startIndex..<buffer.startIndex.advancedBy(n: self.maxLength)])
+            if text.lengthOfBytes(using: String.Encoding.utf8) > self.maxLength {
+                return text.substring(to: text.index(text.startIndex, offsetBy: self.maxLength))
             } else {
                 return text
             }

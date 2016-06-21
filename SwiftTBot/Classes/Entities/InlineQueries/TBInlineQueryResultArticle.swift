@@ -23,7 +23,7 @@ public class TBInlineQueryResultArticle: TBInlineQueryResult {
     public var thumbHeight: Int?
     
     override public func mapping(map: Map) {
-        super.mapping(map)
+        super.mapping(map: map)
         
         title <- map["title"]
         url <- map["url"]

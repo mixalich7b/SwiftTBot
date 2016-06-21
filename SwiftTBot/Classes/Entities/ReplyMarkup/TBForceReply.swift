@@ -13,7 +13,7 @@ public class TBForceReply: TBEntity, TBReplyMarkupProtocol {
     public var selective: Bool?
     
     override public func mapping(map: Map) {
-        super.mapping(map)
+        super.mapping(map: map)
         
         forceReply <- map["force_reply"]
         selective <- map["selective"]

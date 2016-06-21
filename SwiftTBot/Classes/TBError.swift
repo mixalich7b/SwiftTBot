@@ -8,12 +8,12 @@
 
 import Foundation
 
-public enum TBError: ErrorType {
+public enum TBError: ErrorProtocol {
     case BadRequest
-    case NetworkError(response: NSURLResponse?, error: NSError?)
-    case WrongResponseData(responseData: NSData, response: NSURLResponse?, error: NSError?)
+    case NetworkError(response: URLResponse?, error: NSError?)
+    case WrongResponseData(responseData: Data, response: URLResponse?, error: NSError?)
     case ProtocolError(description: String?)
-    case ResponseParsingError(responseDictionary: Dictionary<String, AnyObject>, response: NSURLResponse?, error: NSError?)
+    case ResponseParsingError(responseDictionary: Dictionary<String, AnyObject>, response: URLResponse?, error: NSError?)
 }
 
 extension TBError: CustomStringConvertible {
@@ -21,7 +21,7 @@ extension TBError: CustomStringConvertible {
         switch self {
             case .BadRequest: return "BadRequest"
             case .NetworkError(_, let error): return "Network error: \(error?.localizedDescription)"
-            case .WrongResponseData(let responseData, _, _): return "Wrong response: \(NSString(data: responseData, encoding: NSUTF8StringEncoding))"
+            case .WrongResponseData(let responseData, _, _): return "Wrong response: \(NSString(data: responseData, encoding: String.Encoding.utf8.rawValue))"
             case ProtocolError(let description): return "Protocol error: \(description)"
             case ResponseParsingError(let responseDictionary, _, _): return "Failure on parsing response: \(responseDictionary)"
         }

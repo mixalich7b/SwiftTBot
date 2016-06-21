@@ -17,7 +17,7 @@ public class TBInlineKeyboardMarkup: TBEntity, TBReplyMarkupProtocol {
     }
     
     override public func mapping(map: Map) {
-        super.mapping(map)
+        super.mapping(map: map)
         
         keyboard <- map["inline_keyboard"]
     }

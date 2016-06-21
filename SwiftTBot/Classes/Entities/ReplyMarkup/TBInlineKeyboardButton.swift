@@ -15,7 +15,7 @@ public class TBInlineKeyboardButton: TBEntity {
     public var switchInlineQuery: String?
     
     override public func mapping(map: Map) {
-        super.mapping(map)
+        super.mapping(map: map)
         
         text <- map["text"]
         url <- map["url"]

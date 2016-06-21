@@ -7,6 +7,7 @@
 //
 
 import ObjectMapper
+import Foundation
 
 public class TBMessage: TBEntity {
     public var id: Int = -1
