@@ -16,59 +16,71 @@ class AppDelegate: NSObject, NSApplicationDelegate, TBotDelegate {
     
     @IBOutlet weak var window: NSWindow!
 
-
-    func applicationDidFinishLaunching(aNotification: NSNotification) {
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
         bot.delegate = self
-        bot.on("/start") { "Hello, \($0.from?.firstName ?? $0.chat.firstName ?? "" )"}
-            .on("/test") { _ in "It's work"}
-            .on("/info") {[weak self] (message, replyCallback) in
-                do {
-                    try self?.bot.sendRequest(TBGetMeRequest(), completion: { (response) in
-                        if let username = response.responseEntities?.first?.username {
-                            replyCallback("\(username)\nhttps://telegram.me/\(username)")
-                        }
-                    })
-                } catch {
-                }
-            }
+//        _ = self.bot.on(command: "/start") { "Hello, \($0.from?.firstName ?? $0.chat.firstName ?? "" )"}
+//            .on(command: "/test") { _ in "It's work"}
+//            .on(command: "/info") {[weak self] (message, replyCallback) in
+//                do {
+//                    try self?.bot.sendRequest(request: TBGetMeRequest(), completion: { (response) in
+//                        if let username = response.responseEntities?.first?.username {
+//                            replyCallback("\(username)\nhttps://telegram.me/\(username)")
+//                        }
+//                    })
+//                } catch {
+//                }
+//        }
+//
+        let awesomeCommandRegex = try! RegularExpression(pattern: "^(\\/awesome)\\s([0-9]{1,4})\\s([0-9]{1,4})$", options: RegularExpression.Options(rawValue: 0))
+//        let argsParsingRegex = try! NSRegularExpression(pattern: "([0-9]{1,4})", options: NSRegularExpressionOptions(rawValue: 0))
+//        bot.on(awesomeCommandRegex) { (message, matchRange, callback) in
+//            guard let text = message.text else {
+//                return
+//            }
+//            
+//            let replyString = argsParsingRegex.matchesInString(text, options: NSMatchingOptions.ReportProgress, range: matchRange)
+//                .reduce("Args: ", combine: { (replyText, checkResult) -> String in
+//                    let startOffset = checkResult.range.location
+//                    let endOffset = checkResult.range.location + checkResult.range.length
+//                    let range = text.startIndex.advancedBy(startOffset)..<text.startIndex.advancedBy(endOffset)
+//                    return replyText + text.substringWithRange(range) + ", "
+//                })
+//            callback(replyString)
+//        }
         
-        let awesomeCommandRegex = try! NSRegularExpression(pattern: "^(\\/awesome)\\s([0-9]{1,4})\\s([0-9]{1,4})$", options: NSRegularExpressionOptions(rawValue: 0))
-        let argsParsingRegex = try! NSRegularExpression(pattern: "([0-9]{1,4})", options: NSRegularExpressionOptions(rawValue: 0))
-        bot.on(awesomeCommandRegex) { (message, matchRange, callback) in
-            guard let text = message.text else {
-                return
-            }
-            
-            let replyString = argsParsingRegex.matchesInString(text, options: NSMatchingOptions.ReportProgress, range: matchRange)
-                .reduce("Args: ", combine: { (replyText, checkResult) -> String in
-                    let startOffset = checkResult.range.location
-                    let endOffset = checkResult.range.location + checkResult.range.length
-                    let range = text.startIndex.advancedBy(startOffset)..<text.startIndex.advancedBy(endOffset)
-                    return replyText + text.substringWithRange(range) + ", "
-                })
-            callback(replyString)
+        _ = self.bot.onInline(regex: awesomeCommandRegex) { (inlineQuery, range, callback) in
+        let article1 = TBInlineQueryResultArticle(id: "\(arc4random_uniform(1000))", title: "Test title", inputMessageContent: TBInputTextMessageContent(messageText: "Test text"))
+        article1.url = "google.com"
+        callback([article1])
         }
         
-        bot.onInline(awesomeCommandRegex) { (inlineQuery, range, callback) in
-            let article1 = TBInlineQueryResultArticle(id: "\(arc4random_uniform(1000))", title: "Test title", inputMessageContent: TBInputTextMessageContent(messageText: "Test text"))
-            article1.url = "google.com"
-            callback([article1])
-        }
         
-        
-        bot.start { (error) in
+        self.bot.start { (error) in
             print("Bot haven't started, error: \(error)")
+        }
+    
+        let sendTestMessageRequest = TBSendMessageRequest(chatId: 1657203, text: "Hello, man!", replyMarkup: TBReplyMarkupNone(), parseMode: .None)
+        do {
+            try self.bot.sendRequest(request: sendTestMessageRequest, completion: { (response) in
+                if !response.isOk {
+                    print("API error: \(response.error?.description)")
+                }
+            })
+        } catch TBError.BadRequest {
+            print("Bad request")
+        } catch {
+            print("")
         }
     }
 
-    func applicationWillTerminate(aNotification: NSNotification) {
+    func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
     
     // MARK: TBotDelegate
     func didReceiveMessages(messages: [TBMessage], fromBot bot: TBot) -> Void {
-        for _ in messages {
-//            self.respondToMessage(message)
+        for message in messages {
+            self.respondToMessage(message: message)
         }
     }
     
@@ -98,7 +110,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, TBotDelegate {
         keyboard.oneTimeKeyboard = true
         let echoRequest = TBSendMessageRequest(chatId: message.chat.id, text: replyHTML, replyMarkup: keyboard, parseMode: .HTML)
         do {
-            try self.bot.sendRequest(echoRequest, completion: { (response) in
+            try self.bot.sendRequest(request: echoRequest, completion: { (response) in
                 if !response.isOk {
                     print("API error: \(response.error?.description)")
                 }
@@ -110,7 +122,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, TBotDelegate {
         }
     }
     
-    private func respondToInlineQuery(inlineQuery: TBInlineQuery) {
+    private func respondToInlineQuery(_ inlineQuery: TBInlineQuery) {
         let article1 = TBInlineQueryResultArticle(id: "\(arc4random_uniform(1000))", title: "Test title", inputMessageContent: TBInputTextMessageContent(messageText: "Test text"))
         article1.url = "google.com"
         let article2 = TBInlineQueryResultArticle(id: "\(arc4random_uniform(1000))", title: "Awesome article", inputMessageContent: TBInputLocationMessageContent(longitude: 98.292905, latitude: 7.817627))
@@ -135,7 +147,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, TBotDelegate {
         
         let answerInlineRequest = TBAnswerInlineQueryRequest(inlineRequestId: inlineQuery.id, results: [article1, article2, article3], switchPMText: "Go PM", switchPMParameter: "/info")
         do {
-            try self.bot.sendRequest(answerInlineRequest, completion: { (response) in
+            try self.bot.sendRequest(request: answerInlineRequest, completion: { (response) in
                 if !response.isOk {
                     print("API error: \(response.error?.description)")
                 }

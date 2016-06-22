@@ -14,5 +14,5 @@ Pod::Spec.new do |s|
   s.requires_arc = 'true'
   s.source_files = 'SwiftTBot/Classes/**/*.swift'
 
-  s.dependency 'ObjectMapper', '~> 1.2'
+  s.dependency 'ObjectMapper', '~> 1.3'
 end

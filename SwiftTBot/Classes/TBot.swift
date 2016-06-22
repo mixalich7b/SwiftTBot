@@ -63,7 +63,7 @@ public class TBot {
     }
     
     internal func setHandler(handler: TBMessageHandlerClosure?, forCommand textCommand: String) {
-        self.textCommandHandlersQueue.async(group: .none, qos: .default, flags: .barrier) { 
+        self.textCommandHandlersQueue.async(group: .none, flags: .barrier) {
             guard let handler = handler else {
                 self.textCommandHandlers.removeValue(forKey: textCommand)
                 return
@@ -73,7 +73,7 @@ public class TBot {
     }
     
     internal func setHandler(handler: TBRegexMessageHandlerClosure?, forRegexCommand regexCommand: RegularExpression) {
-        self.regexCommandHandlersQueue.async(group: .none, qos: .default, flags: .barrier) {
+        self.regexCommandHandlersQueue.async(group: .none, flags: .barrier) {
             guard let handler = handler else {
                 self.regexCommandHandlers.removeValue(forKey: regexCommand)
                 return
@@ -83,7 +83,7 @@ public class TBot {
     }
     
     internal func setHandler(handler: TBInlineQueryHandlerClosure?, forInlineQueryRegex inlineQueryRegex: RegularExpression) {
-        self.inlineQueryHandlersQueue.async(group: .none, qos: .default, flags: .barrier) {
+        self.inlineQueryHandlersQueue.async(group: .none, flags: .barrier) {
             guard let handler = handler else {
                 self.inlineQueryHandlers.removeValue(forKey: inlineQueryRegex)
                 return

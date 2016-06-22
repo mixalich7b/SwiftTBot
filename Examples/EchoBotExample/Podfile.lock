@@ -1,17 +1,25 @@
 PODS:
   - ObjectMapper (1.3.0)
   - SwiftTBot (0.1.0):
-    - ObjectMapper (~> 1.2)
+    - ObjectMapper (~> 1.3)
 
 DEPENDENCIES:
+  - ObjectMapper (from `https://github.com/mixalich7b/ObjectMapper.git`)
   - SwiftTBot (from `../../`)
 
 EXTERNAL SOURCES:
+  ObjectMapper:
+    :git: https://github.com/mixalich7b/ObjectMapper.git
   SwiftTBot:
     :path: ../../
 
+CHECKOUT OPTIONS:
+  ObjectMapper:
+    :commit: 7d891f2721258a5ed060ebbb694837336df23a01
+    :git: https://github.com/mixalich7b/ObjectMapper.git
+
 SPEC CHECKSUMS:
   ObjectMapper: 4eb08a726e9791a93b2632049951b56a7c17e471
-  SwiftTBot: 8eead3b6e077a1286db5dbdcd8691318f97d6303
+  SwiftTBot: e99d92df47686316e7818ada152708cf0fccb71d
 
 COCOAPODS: 0.39.0
