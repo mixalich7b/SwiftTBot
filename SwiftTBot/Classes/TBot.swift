@@ -180,6 +180,10 @@ public final class TBot {
         guard let URLRequest = TBNetworkRequestFabric.networkRequestWithRequest(request, token: self.token) else {
             throw TBError.badRequest
         }
+        print(URLRequest.url!)
+        if let httpBody = URLRequest.httpBody {
+            print(String(data: httpBody, encoding: String.Encoding.utf8)!)
+        }
         let task = self.URLSession.dataTask(with: URLRequest, completionHandler: {[weak self] (data, requestResponse, requestError) in
             guard let strongSelf = self else {
                 return
@@ -192,6 +196,7 @@ public final class TBot {
                     })
                     return
                 }
+                print(String(data: responseData, encoding: String.Encoding.utf8)!)
                 let JSON: Any?
                 do {
                     try JSON = JSONSerialization.jsonObject(with: responseData, options: JSONSerialization.ReadingOptions(rawValue: 0))
