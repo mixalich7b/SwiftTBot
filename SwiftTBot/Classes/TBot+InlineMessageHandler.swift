@@ -8,16 +8,28 @@
 
 import Foundation
 
-public typealias TBInlineReplyClosure = ([TBInlineQueryResult]) -> Void;
+public struct InlineQueryReply {
+    private let replyClosure: ([TBInlineQueryResult]) -> Void
+    
+    public func send(_ results: [TBInlineQueryResult]) {
+        replyClosure(results)
+    }
+    
+    internal init(replyClosure: @escaping ([TBInlineQueryResult]) -> Void) {
+        self.replyClosure = replyClosure
+    }
+}
 
 public extension TBot {
     // Regex based matching. Async reply
-    public func onInline(_ regex: NSRegularExpression, handler: @escaping (TBInlineQuery, NSRange, TBInlineReplyClosure) -> Void) -> Self {
+    @discardableResult
+    public func onInline(_ regex: NSRegularExpression, handler: @escaping (TBInlineQuery, NSRange, InlineQueryReply) -> Void) -> Self {
         self.setHandler({ (inlineQuery, range) in
-            handler(inlineQuery, range, {[weak self] (results) in
+            let inlineQueryReply = InlineQueryReply(replyClosure: {[weak self] (results) in
                 let request = TBAnswerInlineQueryRequest(inlineRequestId: inlineQuery.id, results:  results)
                 self?.sendInlineAnswer(request)
             })
+            handler(inlineQuery, range, inlineQueryReply)
         }, forInlineQueryRegex: regex)
         return self
     }

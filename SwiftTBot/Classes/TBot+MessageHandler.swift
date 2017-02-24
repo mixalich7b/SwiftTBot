@@ -8,21 +8,34 @@
 
 import Foundation
 
-public typealias TBTextReplyClosure = (String) -> Void;
+public struct TextReply {
+    private let replyClosure: (String) -> Void
+    
+    public func send(_ message: String) {
+        replyClosure(message)
+    }
+    
+    internal init(replyClosure: @escaping (String) -> Void) {
+        self.replyClosure = replyClosure
+    }
+}
 
 public extension TBot {
     // Async reply
-    public func on(_ command: String, handler: @escaping (TBMessage, TBTextReplyClosure) -> Void) -> Self {
+    @discardableResult
+    public func on(_ command: String, handler: @escaping (TBMessage, TextReply) -> Void) -> Self {
         self.setHandler({ (message) in
-            handler(message, {[weak self] (replyString) in
+            let replier = TextReply(replyClosure: {[weak self] (replyString) in
                 let request = TBSendMessageRequest(chatId: message.chat.id, text: replyString, replyMarkup: TBReplyMarkupNone())
                 self?.sendMessage(request)
             })
+            handler(message, replier)
         }, forCommand: command)
         return self
     }
     
     // Sync reply
+    @discardableResult
     public func on(_ command: String, handler: @escaping (TBMessage) -> String) -> Self {
         self.setHandler({[weak self] (message) in
             let replyString = handler(message)
@@ -33,12 +46,14 @@ public extension TBot {
     }
     
     // Regex based matching. Async reply
-    public func on(_ regex: NSRegularExpression, handler: @escaping (TBMessage, NSRange, TBTextReplyClosure) -> Void) -> Self {
+    @discardableResult
+    public func on(_ regex: NSRegularExpression, handler: @escaping (TBMessage, NSRange, TextReply) -> Void) -> Self {
         self.setHandler({ (message, range) in
-            handler(message, range, {[weak self] (replyString) in
+            let replier = TextReply(replyClosure: {[weak self] (replyString) in
                 let request = TBSendMessageRequest(chatId: message.chat.id, text: replyString, replyMarkup: TBReplyMarkupNone())
                 self?.sendMessage(request)
             })
+            handler(message, range, replier)
         }, forRegexCommand: regex)
         return self
     }
