@@ -13,13 +13,14 @@ public class TBAnswerInlineQueryRequest<Res: TBEntity>: TBRequest<Res> {
         return "answerInlineQuery"
     }
     
-    public var id: String = ""
-    public var results: [TBInlineQueryResult] = []
+    private var id: String = ""
+    private var results: [TBInlineQueryResult] = []
     public var cacheLifetime: Int?
     public var isPersonal: Bool?
     public var paginationOffset: String?
     public var switchPMText: String?
     public var switchPMParameter: String?
+    public var cacheTimeSeconds: Int?
     
     override public func mapping(map: Map) {
         super.mapping(map: map)
@@ -32,19 +33,12 @@ public class TBAnswerInlineQueryRequest<Res: TBEntity>: TBRequest<Res> {
         paginationOffset <- map["next_offset"]
         switchPMText <- map["switch_pm_text"]
         switchPMParameter <- map["switch_pm_parameter"]
+        cacheTimeSeconds <- map["cache_time"]
     }
         
     convenience public init(inlineRequestId: String, results: [TBInlineQueryResult]) {
         self.init()
         self.id = inlineRequestId
         self.results = results
-    }
-    
-    convenience public init(inlineRequestId: String, results: [TBInlineQueryResult], switchPMText: String, switchPMParameter: String) {
-        self.init()
-        self.id = inlineRequestId
-        self.results = results
-        self.switchPMText = switchPMText
-        self.switchPMParameter = switchPMParameter
     }
 }
