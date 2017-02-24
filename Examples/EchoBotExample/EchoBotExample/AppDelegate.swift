@@ -156,10 +156,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, TBotDelegate {
         
         let answerInlineRequest = TBAnswerInlineQueryRequest(
             inlineRequestId: inlineQuery.id,
-            results: [article1, article2, article3],
-            switchPMText: "Go PM",
-            switchPMParameter: "/info"
+            results: [article1, article2, article3]
         )
+        answerInlineRequest.switchPMText = "Go PM"
+        answerInlineRequest.switchPMParameter = "info"
+        answerInlineRequest.cacheTimeSeconds = 5
         do {
             try self.bot.sendRequest(answerInlineRequest, completion: { (response) in
                 if !response.isOk {
