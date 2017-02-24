@@ -14,23 +14,19 @@ public enum TBSendMessageParseMode: String {
     case HTML = "HTML"
 }
 
-public class TBSendMessageRequest<Res: TBMessage, ReplyType where ReplyType: TBEntity, ReplyType: TBReplyMarkupProtocol>: TBRequest<Res> {
+public final class TBSendMessageRequest<Res: TBMessage, ReplyType>: TBRequest<Res> where ReplyType: TBEntity, ReplyType: TBReplyMarkupProtocol {
     override internal func getMethod() -> String {
         return "sendMessage"
     }
     
-    var chatId: Int?
-    var channelUsername: String?
-    var text: String = ""
-    var parseMode: TBSendMessageParseMode?
-    var disableWebPagePreview: Bool?
-    var disableNotification: Bool?
-    var replyToMessageId: Int?
-    var replyMarkup: ReplyType?
-    
-    override public init() {
-        super.init()
-    }
+    private var chatId: Int?
+    private var channelUsername: String?
+    private var text: String = ""
+    private var parseMode: TBSendMessageParseMode?
+    private var disableWebPagePreview: Bool?
+    private var disableNotification: Bool?
+    private var replyToMessageId: Int?
+    private var replyMarkup: ReplyType?
     
     convenience public init(chatId: Int, text: String, replyMarkup: ReplyType, parseMode: TBSendMessageParseMode = .None) {
         self.init()
@@ -49,7 +45,7 @@ public class TBSendMessageRequest<Res: TBMessage, ReplyType where ReplyType: TBE
     }
     
     override public func mapping(map: Map) {
-        super.mapping(map)
+        super.mapping(map: map)
         
         chatId <- map["chat_id"]
         channelUsername <- map["chat_id"]

@@ -8,7 +8,7 @@
 
 import ObjectMapper
 
-public class TBLimitedLengthTextTransform: TransformType {
+public final class TBLimitedLengthTextTransform: TransformType {
     public typealias Object = String
     public typealias JSON = String
     
@@ -18,18 +18,18 @@ public class TBLimitedLengthTextTransform: TransformType {
         self.maxLength = maxLength
     }
     
-    public func transformFromJSON(value: AnyObject?) -> String? {
+    public func transformFromJSON(_ value: Any?) -> String? {
         if let text = value as? String {
             return text
         }
         return nil
     }
     
-    public func transformToJSON(value: String?) -> String? {
+    public func transformToJSON(_ value: String?) -> String? {
         if let text = value {
             let buffer = text.utf8
             if buffer.count > self.maxLength {
-                return String(buffer[buffer.startIndex..<buffer.startIndex.advancedBy(self.maxLength)])
+                return String(buffer[buffer.startIndex..<buffer.index(buffer.startIndex, offsetBy: self.maxLength)])
             } else {
                 return text
             }

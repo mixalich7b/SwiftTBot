@@ -8,8 +8,8 @@
 
 import ObjectMapper
 
-public class TBReplyKeyboardMarkup: TBEntity, TBReplyMarkupProtocol {
-    public var keyboard: [[TBKeyboardButton]] = [[]]
+public final class TBReplyKeyboardMarkup: TBEntity, TBReplyMarkupProtocol {
+    private var keyboard: [[TBKeyboardButton]] = [[]]
     public var resizeKeyboard: Bool?
     public var oneTimeKeyboard: Bool?
     public var selective: Bool?
@@ -20,7 +20,7 @@ public class TBReplyKeyboardMarkup: TBEntity, TBReplyMarkupProtocol {
     }
     
     override public func mapping(map: Map) {
-        super.mapping(map)
+        super.mapping(map: map)
         
         keyboard <- map["keyboard"]
         resizeKeyboard <- map["resize_keyboard"]

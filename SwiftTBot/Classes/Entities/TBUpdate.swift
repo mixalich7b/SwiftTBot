@@ -8,13 +8,13 @@
 
 import ObjectMapper
 
-public class TBUpdate: TBEntity {
-    public var id: Int = -1
-    public var message: TBMessage?
-    public var inlineQuery: TBInlineQuery?
+internal final class TBUpdate: TBEntity {
+    internal var id: Int = -1
+    internal var message: TBMessage?
+    internal var inlineQuery: TBInlineQuery?
     
     override public func mapping(map: Map) {
-        super.mapping(map)
+        super.mapping(map: map)
         
         id <- map["update_id"]
         message <- map["message"]

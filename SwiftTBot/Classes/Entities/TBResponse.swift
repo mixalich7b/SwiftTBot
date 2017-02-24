@@ -8,28 +8,28 @@
 
 import ObjectMapper
 
-public class TBResponse<T: TBEntity>: Mappable {
-    public var isOk: Bool = false
-    public var error: TBError?
-    public var responseEntities: [T]?
+public final class TBResponse<T: TBEntity>: Mappable {
+    internal var isOk: Bool = false
+    internal var error: TBError?
+    internal var responseEntities: [T]?
     
     private let errorDescriptionTransorm = TransformOf<TBError, String>(fromJSON: {(value: String?) -> TBError? in
-        return value.map{TBError.ProtocolError(description: $0)}
+        return value.map{TBError.protocolError(description: $0)}
     }, toJSON: {(value: TBError?) -> String? in
         return value?.description
     })
     
-    public init() {
+    private init() {
     }
     
-    convenience init(isOk: Bool, responseEntities: [T]?, error: TBError?) {
+    convenience internal init(isOk: Bool, responseEntities: [T]?, error: TBError?) {
         self.init()
         self.isOk = isOk
         self.responseEntities = responseEntities
         self.error = error
     }
     
-    required public init?(_ map: Map) {
+    required public init?(map: Map) {
     }
     
     public func mapping(map: Map) {

@@ -8,20 +8,16 @@
 
 import ObjectMapper
 
-public class TBGetUpdatesRequest<Res: TBUpdate>: TBRequest<Res> {
+internal final class TBGetUpdatesRequest<Res: TBUpdate>: TBRequest<Res> {
     override internal func getMethod() -> String {
         return "getUpdates"
     }
     
-    var offset: Int?
-    var limit: Int?
-    var timeout: Int?
+    private var offset: Int?
+    private var limit: Int?
+    private var timeout: Int?
     
-    override public init() {
-        super.init()
-    }
-    
-    convenience public init(offset: Int, limit: Int, timeout: Int) {
+    convenience internal init(offset: Int, limit: Int, timeout: Int) {
         self.init()
         self.offset = offset
         self.limit = limit
@@ -29,7 +25,7 @@ public class TBGetUpdatesRequest<Res: TBUpdate>: TBRequest<Res> {
     }
     
     override public func mapping(map: Map) {
-        super.mapping(map)
+        super.mapping(map: map)
         
         offset <- map["offset"]
         limit <- map["limit"]

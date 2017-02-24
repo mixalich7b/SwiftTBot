@@ -8,23 +8,15 @@
 
 import ObjectMapper
 
-public class TBInputLocationMessageContent: TBInputMessageContent {
-    public var longitude: Float = 0
-    public var latitude: Float = 0
+public final class TBInputLocationMessageContent: TBInputMessageContent {
+    private var longitude: Float = 0
+    private var latitude: Float = 0
     
     override public func mapping(map: Map) {
-        super.mapping(map)
+        super.mapping(map: map)
         
         longitude <- map["longitude"]
         latitude <- map["latitude"]
-    }
-    
-    override public init() {
-        super.init()
-    }
-    
-    required public init?(_ map: Map) {
-        super.init(map)
     }
     
     convenience public init(longitude: Float, latitude: Float) {

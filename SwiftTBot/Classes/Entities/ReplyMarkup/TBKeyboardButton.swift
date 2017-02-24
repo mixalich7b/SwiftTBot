@@ -8,10 +8,10 @@
 
 import ObjectMapper
 
-public class TBKeyboardButton: TBEntity {
-    public var text: String = ""
-    public var requestContact: Bool?
-    public var requestLocation: Bool?
+public final class TBKeyboardButton: TBEntity {
+    private var text: String = ""
+    private var requestContact: Bool?
+    private var requestLocation: Bool?
     
     convenience public init(text: String) {
         self.init()
@@ -31,7 +31,7 @@ public class TBKeyboardButton: TBEntity {
     }
     
     override public func mapping(map: Map) {
-        super.mapping(map)
+        super.mapping(map: map)
         
         text <- map["text"]
         requestContact <- map["request_contact"]

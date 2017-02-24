@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0AD6F803CF62B3602147B1EC /* Pods_SwiftTBot_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CC514E375DB262532678049 /* Pods_SwiftTBot_iOS.framework */; };
-		24CE33F9E82C2FC304C0A599 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA22948E8B240050EE5F401F /* Pods.framework */; };
-		7A09E1FEA2D9AE435A328B43 /* Pods_SwiftTBot_OSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 837DB08E35DD7896850B8C44 /* Pods_SwiftTBot_OSX.framework */; };
+		19AD6E4642D91E300D443168 /* Pods_SwiftTBot_OSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A42FDC2107C1B031CDAF318B /* Pods_SwiftTBot_OSX.framework */; };
 		B20AC1761CD026B000D5136D /* TBot+MessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20AC1751CD026B000D5136D /* TBot+MessageHandler.swift */; };
 		B21C17C51CCEAF0A003516C2 /* TBMessageEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21C17C41CCEAF0A003516C2 /* TBMessageEntity.swift */; };
 		B21C17C61CCEAF0A003516C2 /* TBMessageEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21C17C41CCEAF0A003516C2 /* TBMessageEntity.swift */; };
@@ -86,6 +84,7 @@
 		B2C687AF1CCD7E21006915B7 /* TBError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C687AD1CCD7E21006915B7 /* TBError.swift */; };
 		B2D329811CDD199F00648FB0 /* TBot+InlineMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D329801CDD199F00648FB0 /* TBot+InlineMessageHandler.swift */; };
 		B2D329821CDD199F00648FB0 /* TBot+InlineMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D329801CDD199F00648FB0 /* TBot+InlineMessageHandler.swift */; };
+		DCC2F213453554F5FEC7E2D3 /* Pods_SwiftTBot_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C01857F71E3534AFF45DFC2 /* Pods_SwiftTBot_iOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,13 +105,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2486C90DD848A6305597FFEC /* Pods-SwiftTBot-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftTBot-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftTBot-iOS/Pods-SwiftTBot-iOS.release.xcconfig"; sourceTree = "<group>"; };
-		2E11D20790454022C6F2A9C7 /* Pods-SwiftTBot-OSX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftTBot-OSX.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftTBot-OSX/Pods-SwiftTBot-OSX.debug.xcconfig"; sourceTree = "<group>"; };
-		3CC514E375DB262532678049 /* Pods_SwiftTBot_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftTBot_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6D9BDF438320F61DEFE55925 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		6DA3806DC5BF6C2567308EB3 /* Pods-SwiftTBot_OSX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftTBot_OSX.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftTBot_OSX/Pods-SwiftTBot_OSX.release.xcconfig"; sourceTree = "<group>"; };
-		728EC52D8BF437E8E3E837B9 /* Pods-SwiftTBot_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftTBot_iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftTBot_iOS/Pods-SwiftTBot_iOS.release.xcconfig"; sourceTree = "<group>"; };
-		837DB08E35DD7896850B8C44 /* Pods_SwiftTBot_OSX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftTBot_OSX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1388DB0D9690ECC2DE7139C4 /* Pods-SwiftTBot_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftTBot_iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftTBot_iOS/Pods-SwiftTBot_iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		1C01857F71E3534AFF45DFC2 /* Pods_SwiftTBot_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftTBot_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A42FDC2107C1B031CDAF318B /* Pods_SwiftTBot_OSX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftTBot_OSX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA22948E8B240050EE5F401F /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B20AC1751CD026B000D5136D /* TBot+MessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TBot+MessageHandler.swift"; sourceTree = "<group>"; };
 		B21C17C41CCEAF0A003516C2 /* TBMessageEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBMessageEntity.swift; sourceTree = "<group>"; };
@@ -164,11 +159,9 @@
 		B2C687A61CCAFD63006915B7 /* TBRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBRequest.swift; sourceTree = "<group>"; };
 		B2C687AD1CCD7E21006915B7 /* TBError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBError.swift; sourceTree = "<group>"; };
 		B2D329801CDD199F00648FB0 /* TBot+InlineMessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TBot+InlineMessageHandler.swift"; sourceTree = "<group>"; };
-		D21BDBE5DFA9F1D94037D033 /* Pods-SwiftTBot_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftTBot_iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftTBot_iOS/Pods-SwiftTBot_iOS.debug.xcconfig"; sourceTree = "<group>"; };
-		D6607C87805D3F974A6E5ED6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		EB6ABF20681CB11A0AD421BC /* Pods-SwiftTBot-OSX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftTBot-OSX.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftTBot-OSX/Pods-SwiftTBot-OSX.release.xcconfig"; sourceTree = "<group>"; };
-		ED2E858C5D49988D6C447BB0 /* Pods-SwiftTBot_OSX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftTBot_OSX.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftTBot_OSX/Pods-SwiftTBot_OSX.debug.xcconfig"; sourceTree = "<group>"; };
-		F3F0C6A473C711301D89FBB7 /* Pods-SwiftTBot-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftTBot-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftTBot-iOS/Pods-SwiftTBot-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		B98AF5CC576C912AFAC44541 /* Pods-SwiftTBot_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftTBot_iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftTBot_iOS/Pods-SwiftTBot_iOS.release.xcconfig"; sourceTree = "<group>"; };
+		E62D0323A67F6301443CDD93 /* Pods-SwiftTBot_OSX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftTBot_OSX.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftTBot_OSX/Pods-SwiftTBot_OSX.debug.xcconfig"; sourceTree = "<group>"; };
+		F62164EF57D5BD60FA670646 /* Pods-SwiftTBot_OSX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftTBot_OSX.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftTBot_OSX/Pods-SwiftTBot_OSX.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,8 +169,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0AD6F803CF62B3602147B1EC /* Pods_SwiftTBot_iOS.framework in Frameworks */,
-				24CE33F9E82C2FC304C0A599 /* Pods.framework in Frameworks */,
+				DCC2F213453554F5FEC7E2D3 /* Pods_SwiftTBot_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,7 +185,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A09E1FEA2D9AE435A328B43 /* Pods_SwiftTBot_OSX.framework in Frameworks */,
+				19AD6E4642D91E300D443168 /* Pods_SwiftTBot_OSX.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,19 +200,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8D3FEAEA60B130031E43C663 /* Pods */ = {
+		00605A516A2576300997A1AC /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				2E11D20790454022C6F2A9C7 /* Pods-SwiftTBot-OSX.debug.xcconfig */,
-				EB6ABF20681CB11A0AD421BC /* Pods-SwiftTBot-OSX.release.xcconfig */,
-				F3F0C6A473C711301D89FBB7 /* Pods-SwiftTBot-iOS.debug.xcconfig */,
-				2486C90DD848A6305597FFEC /* Pods-SwiftTBot-iOS.release.xcconfig */,
-				D6607C87805D3F974A6E5ED6 /* Pods.debug.xcconfig */,
-				6D9BDF438320F61DEFE55925 /* Pods.release.xcconfig */,
-				ED2E858C5D49988D6C447BB0 /* Pods-SwiftTBot_OSX.debug.xcconfig */,
-				6DA3806DC5BF6C2567308EB3 /* Pods-SwiftTBot_OSX.release.xcconfig */,
-				D21BDBE5DFA9F1D94037D033 /* Pods-SwiftTBot_iOS.debug.xcconfig */,
-				728EC52D8BF437E8E3E837B9 /* Pods-SwiftTBot_iOS.release.xcconfig */,
+				E62D0323A67F6301443CDD93 /* Pods-SwiftTBot_OSX.debug.xcconfig */,
+				F62164EF57D5BD60FA670646 /* Pods-SwiftTBot_OSX.release.xcconfig */,
+				1388DB0D9690ECC2DE7139C4 /* Pods-SwiftTBot_iOS.debug.xcconfig */,
+				B98AF5CC576C912AFAC44541 /* Pods-SwiftTBot_iOS.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -277,8 +263,8 @@
 				B2C6874A1CC97D16006915B7 /* SwiftTBot-OSX */,
 				B2C687561CC97D17006915B7 /* SwiftTBot-OSXTests */,
 				B2C6872B1CC97BB4006915B7 /* Products */,
-				8D3FEAEA60B130031E43C663 /* Pods */,
 				BCE61F3DEBDA4790A1DC7163 /* Frameworks */,
+				00605A516A2576300997A1AC /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -406,9 +392,9 @@
 			isa = PBXGroup;
 			children = (
 				B2C687721CC99789006915B7 /* Pods.framework */,
-				837DB08E35DD7896850B8C44 /* Pods_SwiftTBot_OSX.framework */,
-				3CC514E375DB262532678049 /* Pods_SwiftTBot_iOS.framework */,
 				AA22948E8B240050EE5F401F /* Pods.framework */,
+				A42FDC2107C1B031CDAF318B /* Pods_SwiftTBot_OSX.framework */,
+				1C01857F71E3534AFF45DFC2 /* Pods_SwiftTBot_iOS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -439,12 +425,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B2C6873E1CC97BB4006915B7 /* Build configuration list for PBXNativeTarget "SwiftTBot_iOS" */;
 			buildPhases = (
-				34AD3F20485A7AC6107D648D /* Check Pods Manifest.lock */,
+				B916E2E204B45155040B2E31 /* [CP] Check Pods Manifest.lock */,
 				B2C687251CC97BB4006915B7 /* Sources */,
 				B2C687261CC97BB4006915B7 /* Frameworks */,
 				B2C687271CC97BB4006915B7 /* Headers */,
 				B2C687281CC97BB4006915B7 /* Resources */,
-				EFB5C318B6C403A37C7995FE /* Copy Pods Resources */,
+				6C65A98081722A7D4F9ACE3F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -477,12 +463,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B2C6875A1CC97D17006915B7 /* Build configuration list for PBXNativeTarget "SwiftTBot_OSX" */;
 			buildPhases = (
-				816EEA672C2152BF097A9361 /* Check Pods Manifest.lock */,
+				46EAC4E79D82EB1CE8A62A45 /* [CP] Check Pods Manifest.lock */,
 				B2C687441CC97D16006915B7 /* Sources */,
 				B2C687451CC97D16006915B7 /* Frameworks */,
 				B2C687461CC97D16006915B7 /* Headers */,
 				B2C687471CC97D16006915B7 /* Resources */,
-				A14929F96A5E388DA175C85F /* Copy Pods Resources */,
+				3802A51F3842ED764FB6E0E2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -518,7 +504,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = mixalich7b;
 				TargetAttributes = {
 					B2C687291CC97BB4006915B7 = {
@@ -587,44 +573,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		34AD3F20485A7AC6107D648D /* Check Pods Manifest.lock */ = {
+		3802A51F3842ED764FB6E0E2 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		816EEA672C2152BF097A9361 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		A14929F96A5E388DA175C85F /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -632,19 +588,49 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftTBot_OSX/Pods-SwiftTBot_OSX-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		EFB5C318B6C403A37C7995FE /* Copy Pods Resources */ = {
+		46EAC4E79D82EB1CE8A62A45 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6C65A98081722A7D4F9ACE3F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftTBot_iOS/Pods-SwiftTBot_iOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B916E2E204B45155040B2E31 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -780,8 +766,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -830,8 +818,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -852,6 +842,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -861,9 +852,11 @@
 		};
 		B2C6873F1CC97BB4006915B7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D21BDBE5DFA9F1D94037D033 /* Pods-SwiftTBot_iOS.debug.xcconfig */;
+			baseConfigurationReference = 1388DB0D9690ECC2DE7139C4 /* Pods-SwiftTBot_iOS.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -876,14 +869,17 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		B2C687401CC97BB4006915B7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 728EC52D8BF437E8E3E837B9 /* Pods-SwiftTBot_iOS.release.xcconfig */;
+			baseConfigurationReference = B98AF5CC576C912AFAC44541 /* Pods-SwiftTBot_iOS.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -895,6 +891,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ru.mixalich7b.SwiftTBot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -905,6 +902,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.mixalich7b.SwiftTBotTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -915,13 +913,15 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.mixalich7b.SwiftTBotTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 		B2C6875B1CC97D17006915B7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ED2E858C5D49988D6C447BB0 /* Pods-SwiftTBot_OSX.debug.xcconfig */;
+			baseConfigurationReference = E62D0323A67F6301443CDD93 /* Pods-SwiftTBot_OSX.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -943,13 +943,15 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		B2C6875C1CC97D17006915B7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6DA3806DC5BF6C2567308EB3 /* Pods-SwiftTBot_OSX.release.xcconfig */;
+			baseConfigurationReference = F62164EF57D5BD60FA670646 /* Pods-SwiftTBot_OSX.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -970,6 +972,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -984,6 +987,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "ru.mixalich7b.SwiftTBot-OSXTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -998,6 +1002,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "ru.mixalich7b.SwiftTBot-OSXTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

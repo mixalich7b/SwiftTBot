@@ -8,22 +8,22 @@
 
 import Foundation
 
-public enum TBError: ErrorType {
-    case BadRequest
-    case NetworkError(response: NSURLResponse?, error: NSError?)
-    case WrongResponseData(responseData: NSData, response: NSURLResponse?, error: NSError?)
-    case ProtocolError(description: String?)
-    case ResponseParsingError(responseDictionary: Dictionary<String, AnyObject>, response: NSURLResponse?, error: NSError?)
+public enum TBError: Error {
+    case badRequest
+    case networkError(response: URLResponse?, error: Error?)
+    case wrongResponseData(responseData: Data, response: URLResponse?, error: Error?)
+    case protocolError(description: String?)
+    case responseParsingError(responseDictionary: Dictionary<String, Any>, response: URLResponse?, error: Error?)
 }
 
 extension TBError: CustomStringConvertible {
     public var description: String { get {
         switch self {
-            case .BadRequest: return "BadRequest"
-            case .NetworkError(_, let error): return "Network error: \(error?.localizedDescription)"
-            case .WrongResponseData(let responseData, _, _): return "Wrong response: \(NSString(data: responseData, encoding: NSUTF8StringEncoding))"
-            case ProtocolError(let description): return "Protocol error: \(description)"
-            case ResponseParsingError(let responseDictionary, _, _): return "Failure on parsing response: \(responseDictionary)"
+            case .badRequest: return "BadRequest"
+            case .networkError(_, let error): return "Network error: \(error?.localizedDescription)"
+            case .wrongResponseData(let responseData, _, _): return "Wrong response: \(NSString(data: responseData, encoding: String.Encoding.utf8.rawValue))"
+            case .protocolError(let description): return "Protocol error: \(description)"
+            case .responseParsingError(let responseDictionary, _, _): return "Failure on parsing response: \(responseDictionary)"
         }
     } }
 }

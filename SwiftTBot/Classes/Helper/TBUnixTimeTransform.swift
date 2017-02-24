@@ -8,18 +8,18 @@
 
 import ObjectMapper
 
-public class TBUnixTimeTransform: TransformType {
-    public typealias Object = NSDate
+public final class TBUnixTimeTransform: TransformType {
+    public typealias Object = Date
     public typealias JSON = Int
     
-    public func transformFromJSON(value: AnyObject?) -> NSDate? {
+    public func transformFromJSON(_ value: Any?) -> Date? {
         if let timestamp = value as? Int {
-            return NSDate(timeIntervalSince1970: NSTimeInterval(timestamp))
+            return Date(timeIntervalSince1970: TimeInterval(timestamp))
         }
         return nil
     }
     
-    public func transformToJSON(value: NSDate?) -> Int? {
+    public func transformToJSON(_ value: Date?) -> Int? {
         if let date = value {
             return Int(date.timeIntervalSince1970)
         }

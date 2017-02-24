@@ -8,13 +8,13 @@
 
 import ObjectMapper
 
-public class TBFile: TBEntity {
+public final class TBFile: TBEntity {
     public var fileId: String = ""
     public var fileSize: Int = -1
     public var filePath: String?
     
     override public func mapping(map: Map) {
-        super.mapping(map)
+        super.mapping(map: map)
         
         fileId <- map["file_id"]
         fileSize <- map["file_size"]

@@ -8,12 +8,12 @@
 
 import ObjectMapper
 
-public class TBForceReply: TBEntity, TBReplyMarkupProtocol {
-    public var forceReply: Bool = true
+public final class TBForceReply: TBEntity, TBReplyMarkupProtocol {
+    private var forceReply: Bool = true
     public var selective: Bool?
     
     override public func mapping(map: Map) {
-        super.mapping(map)
+        super.mapping(map: map)
         
         forceReply <- map["force_reply"]
         selective <- map["selective"]

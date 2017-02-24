@@ -8,11 +8,11 @@ Pod::Spec.new do |s|
   s.author           = { "mixalich7b" => "mixalich7b@gmail.com" }
   s.source           = { :git => "https://github.com/mixalich7b/SwiftTBot.git", :tag => s.version.to_s }
 
-  s.ios.deployment_target = '8.0'
-  s.osx.deployment_target = '10.9'
+  s.ios.deployment_target = '9.0'
+  s.osx.deployment_target = '10.10'
 
   s.requires_arc = 'true'
   s.source_files = 'SwiftTBot/Classes/**/*.swift'
 
-  s.dependency 'ObjectMapper', '~> 1.2'
+  s.dependency 'ObjectMapper', '~> 2.2'
 end

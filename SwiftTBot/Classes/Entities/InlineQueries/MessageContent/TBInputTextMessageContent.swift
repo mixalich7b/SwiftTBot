@@ -8,27 +8,19 @@
 
 import ObjectMapper
 
-public class TBInputTextMessageContent: TBInputMessageContent {
-    public var messageText: String = "" // 1-4096 characters
-    public var parseMode: TBSendMessageParseMode?
-    public var disableWebPagePreview: Bool?
+public final class TBInputTextMessageContent: TBInputMessageContent {
+    private var messageText: String = "" // 1-4096 characters
+    private var parseMode: TBSendMessageParseMode?
+    private var disableWebPagePreview: Bool?
     
     override public func mapping(map: Map) {
-        super.mapping(map)
+        super.mapping(map: map)
         
         messageText <- (map["message_text"], TBLimitedLengthTextTransform(maxLength: 4096))
         parseMode <- map["parse_mode"]
         disableWebPagePreview <- map["disable_web_page_preview"]
     }
-    
-    override public init() {
-        super.init()
-    }
-    
-    required public init?(_ map: Map) {
-        super.init(map)
-    }
-    
+        
     convenience public init(messageText: String, parseMode: TBSendMessageParseMode = .None) {
         self.init()
         self.messageText = messageText

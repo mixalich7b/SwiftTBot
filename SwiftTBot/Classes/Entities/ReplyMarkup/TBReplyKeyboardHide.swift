@@ -8,12 +8,12 @@
 
 import ObjectMapper
 
-public class TBReplyKeyboardHide: TBEntity, TBReplyMarkupProtocol {
-    public var hideKeyboard: Bool = true
+public final class TBReplyKeyboardHide: TBEntity, TBReplyMarkupProtocol {
+    private var hideKeyboard: Bool = true
     public var selective: Bool?
     
     override public func mapping(map: Map) {
-        super.mapping(map)
+        super.mapping(map: map)
         
         hideKeyboard <- map["hide_keyboard"]
         selective <- map["selective"]

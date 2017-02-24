@@ -8,14 +8,14 @@
 
 import ObjectMapper
 
-public class TBVenue: TBEntity {
+public final class TBVenue: TBEntity {
     public var location: TBLocation = TBUndefinedLocation()
     public var title: String = "undefined"
     public var address: String = "undefined"
     public var foursquareId: String?
     
     override public func mapping(map: Map) {
-        super.mapping(map)
+        super.mapping(map: map)
         
         location <- map["location"]
         title <- map["title"]

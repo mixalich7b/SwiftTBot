@@ -8,8 +8,8 @@
 
 import ObjectMapper
 
-public class TBInlineKeyboardMarkup: TBEntity, TBReplyMarkupProtocol {
-    public var keyboard: [[TBInlineKeyboardButton]] = [[]]
+public final class TBInlineKeyboardMarkup: TBEntity, TBReplyMarkupProtocol {
+    private var keyboard: [[TBInlineKeyboardButton]] = [[]]
     
     convenience public init(buttons: [[TBInlineKeyboardButton]]) {
         self.init()
@@ -17,7 +17,7 @@ public class TBInlineKeyboardMarkup: TBEntity, TBReplyMarkupProtocol {
     }
     
     override public func mapping(map: Map) {
-        super.mapping(map)
+        super.mapping(map: map)
         
         keyboard <- map["inline_keyboard"]
     }

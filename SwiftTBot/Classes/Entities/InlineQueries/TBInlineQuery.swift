@@ -8,15 +8,15 @@
 
 import ObjectMapper
 
-public class TBInlineQuery: TBEntity {
-    public var id: String = ""
-    public var from: TBUser = TBUndefinedUser()
-    public var location: TBLocation?
-    public var text: String = ""
-    public var offset: String = ""
+public final class TBInlineQuery: TBEntity {
+    public internal(set) var id: String = ""
+    public internal(set) var from: TBUser = TBUndefinedUser()
+    public internal(set) var location: TBLocation?
+    public internal(set) var text: String = ""
+    public internal(set) var offset: String = ""
     
     override public func mapping(map: Map) {
-        super.mapping(map)
+        super.mapping(map: map)
         
         id <- map["id"]
         

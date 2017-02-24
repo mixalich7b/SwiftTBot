@@ -8,13 +8,13 @@
 
 import ObjectMapper
 
-public class TBMessage: TBEntity {
+public final class TBMessage: TBEntity {
     public var id: Int = -1
     public var from: TBUser?
-    public var date: NSDate = NSDate()
+    public var date: Date = Date()
     public var chat: TBChat = TBUndefinedChat()
     public var forwardFrom: TBUser?
-    public var forwardDate: NSDate?
+    public var forwardDate: Date?
     public var replyToMessage: TBMessage?
     public var text: String?
     public var entities: [TBMessageEntity]?
@@ -25,7 +25,7 @@ public class TBMessage: TBEntity {
     public var pinnedMessage: TBMessage?
         
     override public func mapping(map: Map) {
-        super.mapping(map)
+        super.mapping(map: map)
         
         id <- map["message_id"]
         from <- map["from"]

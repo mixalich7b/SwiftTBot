@@ -8,14 +8,14 @@
 
 import ObjectMapper
 
-public class TBContact: TBEntity {
+public final class TBContact: TBEntity {
     public var phoneNumber: String = ""
     public var firstName: String = ""
     public var lastName: String?
     public var userId: Int?
     
     override public func mapping(map: Map) {
-        super.mapping(map)
+        super.mapping(map: map)
         
         phoneNumber <- map["phone_number"]
         firstName <- map["first_name"]

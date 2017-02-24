@@ -15,7 +15,7 @@ public class TBUser: TBEntity {
     public var username: String?
     
     override public func mapping(map: Map) {
-        super.mapping(map)
+        super.mapping(map: map)
         
         id <- map["id"]
         
@@ -25,5 +25,5 @@ public class TBUser: TBEntity {
     }
 }
 
-public class TBUndefinedUser: TBUser {
+public final class TBUndefinedUser: TBUser {
 }

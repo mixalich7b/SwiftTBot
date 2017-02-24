@@ -8,11 +8,11 @@
 
 import Foundation
 
-public typealias TBInlineReplyClosure = [TBInlineQueryResult] -> Void;
+public typealias TBInlineReplyClosure = ([TBInlineQueryResult]) -> Void;
 
 public extension TBot {
     // Regex based matching. Async reply
-    public func onInline(regex: NSRegularExpression, handler: (TBInlineQuery, NSRange, TBInlineReplyClosure) -> Void) -> Self {
+    public func onInline(_ regex: NSRegularExpression, handler: @escaping (TBInlineQuery, NSRange, TBInlineReplyClosure) -> Void) -> Self {
         self.setHandler({ (inlineQuery, range) in
             handler(inlineQuery, range, {[weak self] (results) in
                 let request = TBAnswerInlineQueryRequest(inlineRequestId: inlineQuery.id, results:  results)
@@ -22,14 +22,14 @@ public extension TBot {
         return self
     }
     
-    private func sendInlineAnswer(request: TBAnswerInlineQueryRequest<TBEntity>) {
+    private func sendInlineAnswer(_ request: TBAnswerInlineQueryRequest<TBEntity>) {
         do {
             try self.sendRequest(request, completion: { (response) in
                 if !response.isOk {
                     print("API error: \(response.error?.description)")
                 }
             })
-        } catch TBError.BadRequest {
+        } catch TBError.badRequest {
             print("Bad request")
         } catch {
             print("")

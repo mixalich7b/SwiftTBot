@@ -13,12 +13,12 @@ public class TBRequest<Res: TBEntity>: Mappable {
         fatalError("Must be overriden")
     }
     
-    required public init?(_ map: Map) {
+    required public init?(map: Map) {
     }
     
     public func mapping(map: Map) {
     }
     
-    public init() {
+    internal init() {
     }
 }

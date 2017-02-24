@@ -9,5 +9,5 @@
 public protocol TBReplyMarkupProtocol {
 }
 
-public class TBReplyMarkupNone: TBEntity, TBReplyMarkupProtocol {
+public final class TBReplyMarkupNone: TBEntity, TBReplyMarkupProtocol {
 }
