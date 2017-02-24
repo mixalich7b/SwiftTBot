@@ -156,7 +156,7 @@ public final class TBot {
                 }
             })
         }
-        self.delegate?.didReceiveMessages(messages, fromBot: self)
+        self.delegate?.didReceiveMessages(messages: messages, fromBot: self)
     }
     
     private func handleInlineQueries(_ inlineQueries: [TBInlineQuery]) {
@@ -173,7 +173,7 @@ public final class TBot {
                 }
             })
         }
-        self.delegate?.didReceiveInlineQueries(inlineQueries, fromBot: self)
+        self.delegate?.didReceiveInlineQueries(inlineQueries: inlineQueries, fromBot: self)
     }
     
     public func sendRequest<ResponseEntity: TBEntity>(_ request: TBRequest<ResponseEntity>, completion: @escaping (TBResponse<ResponseEntity>) -> Void) throws {
