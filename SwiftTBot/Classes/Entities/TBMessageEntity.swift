@@ -23,10 +23,10 @@ public enum TBMessageEntityType: String {
 }
 
 public final class TBMessageEntity: TBEntity {
-    public var type: TBMessageEntityType = .Undefined
-    public var offset: Int = -1 // in UTF-16 code units
-    public var length: Int = -1 // in UTF-16 code units
-    public var url: String?
+    public private(set) var type: TBMessageEntityType = .Undefined
+    public private(set) var offset: Int = -1 // in UTF-16 code units
+    public private(set) var length: Int = -1 // in UTF-16 code units
+    public private(set) var url: String?
     
     override public func mapping(map: Map) {
         super.mapping(map: map)

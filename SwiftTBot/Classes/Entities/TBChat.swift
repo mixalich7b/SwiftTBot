@@ -17,12 +17,12 @@ public enum TBChatType: String {
 }
 
 public class TBChat: TBEntity {
-    public var id: Int = -1
-    public var type: TBChatType = .Undefined
-    public var title: String?
-    public var username: String?
-    public var firstName: String?
-    public var lastName: String?
+    public private(set) var id: Int = -1
+    public private(set) var type: TBChatType = .Undefined
+    public private(set) var title: String?
+    public private(set) var username: String?
+    public private(set) var firstName: String?
+    public private(set) var lastName: String?
     
     override public func mapping(map: Map) {
         super.mapping(map: map)

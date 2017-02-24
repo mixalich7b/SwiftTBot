@@ -176,7 +176,7 @@ public final class TBot {
         self.delegate?.didReceiveInlineQueries(inlineQueries, fromBot: self)
     }
     
-    internal func sendRequest<ResponseEntity: TBEntity>(_ request: TBRequest<ResponseEntity>, completion: @escaping (TBResponse<ResponseEntity>) -> Void) throws {
+    public func sendRequest<ResponseEntity: TBEntity>(_ request: TBRequest<ResponseEntity>, completion: @escaping (TBResponse<ResponseEntity>) -> Void) throws {
         guard let URLRequest = TBNetworkRequestFabric.networkRequestWithRequest(request, token: self.token) else {
             throw TBError.badRequest
         }

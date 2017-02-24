@@ -13,9 +13,9 @@ public class TBInlineQueryResult: TBEntity {
         fatalError("Must be overriden")
     } set {
     }}
-    internal var id: String = "" // 1-64 Bytes
-    internal var inputMessageContent: TBInputMessageContent?
-    internal var replyKeyboardMarkup: TBInlineKeyboardMarkup?
+    private var id: String = "" // 1-64 Bytes
+    private var inputMessageContent: TBInputMessageContent?
+    private var replyKeyboardMarkup: TBInlineKeyboardMarkup?
     
     override public func mapping(map: Map) {
         super.mapping(map: map)
@@ -26,8 +26,10 @@ public class TBInlineQueryResult: TBEntity {
         replyKeyboardMarkup <- map["reply_markup"]
     }
     
-    convenience internal init(id: String) {
+    convenience internal init(id: String, inputMessageContent: TBInputMessageContent, replyKeyboardMarkup: TBInlineKeyboardMarkup?) {
         self.init()
         self.id = id
+        self.inputMessageContent = inputMessageContent
+        self.replyKeyboardMarkup = replyKeyboardMarkup
     }
 }

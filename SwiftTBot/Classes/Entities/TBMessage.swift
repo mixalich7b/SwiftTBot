@@ -9,20 +9,20 @@
 import ObjectMapper
 
 public final class TBMessage: TBEntity {
-    public var id: Int = -1
-    public var from: TBUser?
-    public var date: Date = Date()
-    public var chat: TBChat = TBUndefinedChat()
-    public var forwardFrom: TBUser?
-    public var forwardDate: Date?
-    public var replyToMessage: TBMessage?
-    public var text: String?
-    public var entities: [TBMessageEntity]?
-    public var caption: String?
-    public var contact: TBContact?
-    public var location: TBLocation?
-    public var venue: TBVenue?
-    public var pinnedMessage: TBMessage?
+    public private(set) var id: Int = -1
+    public private(set) var from: TBUser?
+    public private(set) var date: Date = Date()
+    public private(set) var chat: TBChat = TBUndefinedChat()
+    public private(set) var forwardFrom: TBUser?
+    public private(set) var forwardDate: Date?
+    public private(set) var replyToMessage: TBMessage?
+    public private(set) var text: String?
+    public private(set) var entities: [TBMessageEntity]?
+    public private(set) var caption: String?
+    public private(set) var contact: TBContact?
+    public private(set) var location: TBLocation?
+    public private(set) var venue: TBVenue?
+    public private(set) var pinnedMessage: TBMessage?
         
     override public func mapping(map: Map) {
         super.mapping(map: map)

@@ -9,10 +9,10 @@
 import ObjectMapper
 
 public final class TBVenue: TBEntity {
-    public var location: TBLocation = TBUndefinedLocation()
-    public var title: String = "undefined"
-    public var address: String = "undefined"
-    public var foursquareId: String?
+    public private(set) var location: TBLocation = TBUndefinedLocation()
+    public private(set) var title: String = "undefined"
+    public private(set) var address: String = "undefined"
+    public private(set) var foursquareId: String?
     
     override public func mapping(map: Map) {
         super.mapping(map: map)

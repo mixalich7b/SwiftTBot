@@ -15,12 +15,12 @@ public final class TBInlineQueryResultArticle: TBInlineQueryResult {
     }}
     
     private var title: String = ""
-    private var url: String?
-    private var hideUrl: Bool?
-    private var description: String?
-    private var thumb_url: String?
-    private var thumbWidth: Int?
-    private var thumbHeight: Int?
+    public var url: String?
+    public var hideUrl: Bool?
+    public var description: String?
+    public var thumb_url: String?
+    public var thumbWidth: Int?
+    public var thumbHeight: Int?
     
     override public func mapping(map: Map) {
         super.mapping(map: map)
@@ -34,9 +34,8 @@ public final class TBInlineQueryResultArticle: TBInlineQueryResult {
         thumbHeight <- map["thumb_height"]
     }
     
-    convenience public init(id: String, title: String, inputMessageContent: TBInputMessageContent) {
-        self.init(id: id)
+    convenience public init(id: String, title: String, inputMessageContent: TBInputMessageContent, replyKeyboardMarkup: TBInlineKeyboardMarkup? = nil) {
+        self.init(id: id, inputMessageContent: inputMessageContent, replyKeyboardMarkup: replyKeyboardMarkup)
         self.title = title
-        self.inputMessageContent = inputMessageContent
     }
 }

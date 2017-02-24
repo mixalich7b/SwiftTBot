@@ -9,9 +9,9 @@
 import ObjectMapper
 
 public final class TBResponse<T: TBEntity>: Mappable {
-    internal var isOk: Bool = false
-    internal var error: TBError?
-    internal var responseEntities: [T]?
+    public private(set) var isOk: Bool = false
+    public private(set) var error: TBError?
+    public private(set) var responseEntities: [T]?
     
     private let errorDescriptionTransorm = TransformOf<TBError, String>(fromJSON: {(value: String?) -> TBError? in
         return value.map{TBError.protocolError(description: $0)}

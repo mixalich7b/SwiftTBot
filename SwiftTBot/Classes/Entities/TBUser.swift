@@ -9,10 +9,10 @@
 import ObjectMapper
 
 public class TBUser: TBEntity {
-    public var id: Int = -1
-    public var firstName: String = ""
-    public var lastName: String?
-    public var username: String?
+    public private(set) var id: Int = -1
+    public private(set) var firstName: String = ""
+    public private(set) var lastName: String?
+    public private(set) var username: String?
     
     override public func mapping(map: Map) {
         super.mapping(map: map)

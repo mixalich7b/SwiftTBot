@@ -9,10 +9,10 @@
 import ObjectMapper
 
 public final class TBContact: TBEntity {
-    public var phoneNumber: String = ""
-    public var firstName: String = ""
-    public var lastName: String?
-    public var userId: Int?
+    public private(set) var phoneNumber: String = ""
+    public private(set) var firstName: String = ""
+    public private(set) var lastName: String?
+    public private(set) var userId: Int?
     
     override public func mapping(map: Map) {
         super.mapping(map: map)

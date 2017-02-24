@@ -9,9 +9,9 @@
 import ObjectMapper
 
 public final class TBFile: TBEntity {
-    public var fileId: String = ""
-    public var fileSize: Int = -1
-    public var filePath: String?
+    public private(set) var fileId: String = ""
+    public private(set) var fileSize: Int = -1
+    public private(set) var filePath: String?
     
     override public func mapping(map: Map) {
         super.mapping(map: map)
