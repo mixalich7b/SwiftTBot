@@ -1,19 +1,23 @@
 PODS:
-  - ObjectMapper (2.2.1)
+  - ObjectMapper (3.4.1)
   - SwiftTBot (0.1.0):
-    - ObjectMapper (~> 2.2)
+    - ObjectMapper (~> 3.4)
 
 DEPENDENCIES:
   - SwiftTBot (from `../../`)
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - ObjectMapper
+
 EXTERNAL SOURCES:
   SwiftTBot:
-    :path: ../../
+    :path: "../../"
 
 SPEC CHECKSUMS:
-  ObjectMapper: 41e43e1a89f8060ef5ea5d04ba852e269a621d68
-  SwiftTBot: bf34cb8ec8410b813404964dff81c76c67fc91c1
+  ObjectMapper: 5311bd50ca732930959e7ca1a2de43ab823a5ced
+  SwiftTBot: e3cbeb8d7c558acd8e882dbf4aad420d49520319
 
 PODFILE CHECKSUM: 5e749a42faa6623d73535030c371f595b9dec8db
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.5.3

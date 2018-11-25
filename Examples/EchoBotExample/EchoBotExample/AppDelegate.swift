@@ -12,7 +12,7 @@ import SwiftTBot
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, TBotDelegate {
 
-    private let bot = TBot(token: <your_token>)
+    private let bot = TBot(token: "<your_token>")
     
     @IBOutlet weak var window: NSWindow!
 
@@ -67,7 +67,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, TBotDelegate {
         
         
         bot.start { (error) in
-            print("Bot haven't started, error: \(error)")
+            print("Bot haven't started, error: \(error?.description ?? "unknown")")
         }
     }
 
@@ -85,7 +85,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, TBotDelegate {
     }
     
     func didFailReceivingUpdates<Res: TBEntity>(fromBot bot: TBot, response: TBResponse<Res>?) {
-        print("Receiving updates failure: \(response?.error)")
+        print("Receiving updates failure: \(response?.error?.description ?? "unknown error")")
     }
     
     private func respondToMessage(_ message: TBMessage) {
@@ -113,7 +113,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, TBotDelegate {
         do {
             try self.bot.sendRequest(echoRequest, completion: { (response) in
                 if !response.isOk {
-                    print("API error: \(response.error?.description)")
+                    print("API error: \(response.error?.description ?? "unknown")")
                 }
             })
         } catch TBError.badRequest {
@@ -164,7 +164,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, TBotDelegate {
         do {
             try self.bot.sendRequest(answerInlineRequest, completion: { (response) in
                 if !response.isOk {
-                    print("API error: \(response.error?.description)")
+                    print("API error: \(response.error?.description ?? "unknown")")
                 }
             })
         } catch TBError.badRequest {

@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = '10.10'
 
   s.requires_arc = 'true'
-  s.source_files = 'SwiftTBot/Classes/**/*.swift'
+  s.source_files = 'Sources/SwiftTBot/**/*.swift'
 
-  s.dependency 'ObjectMapper', '~> 2.2'
+  s.dependency 'ObjectMapper', '~> 3.4'
 end
