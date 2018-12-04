@@ -9,15 +9,6 @@
           "revision": "52f15feefb831d57711647b76d75f1df72d7e822",
           "version": "3.4.2"
         }
-      },
-      {
-        "package": "SwiftTBot",
-        "repositoryURL": "https://github.com/mixalich7b/SwiftTBot.git",
-        "state": {
-          "branch": null,
-          "revision": "156f7add01ed1b146f47f38fe2426c104b6d00f9",
-          "version": "0.1.1"
-        }
       }
     ]
   },
