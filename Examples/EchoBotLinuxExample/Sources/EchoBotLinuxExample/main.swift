@@ -3,6 +3,14 @@ import SwiftTBot
 
 private let bot = TBot(token: "<your_token>")
 
+fileprivate func getRandomNum(_ min: Int, _ max: Int) -> Int {
+    #if os(Linux)
+    return Int(random() % max) + min
+    #else
+    return Int(arc4random_uniform(UInt32(max)) + UInt32(min))
+    #endif
+}
+
 bot.on("/start") { "Hello, \($0.from?.firstName ?? $0.chat.firstName ?? "" )"}
     .on("/test") { _ in "It's work"}
     .on("/info") {[weak bot] (message, textReply) in
@@ -42,7 +50,7 @@ bot.on(awesomeCommandRegex) { (message, matchRange, textReply) in
 
 bot.onInline(awesomeCommandRegex) { (inlineQuery, range, inlineQueryReply) in
     let article1 = TBInlineQueryResultArticle(
-        id: "\(arc4random_uniform(1000))",
+        id: "\(getRandomNum(0, 1000))",
         title: "Test title",
         inputMessageContent: TBInputTextMessageContent(messageText: "Test text")
     )
@@ -92,13 +100,13 @@ private func respondToMessage(_ message: TBMessage) {
 
 private func respondToInlineQuery(_ inlineQuery: TBInlineQuery) {
     let article1 = TBInlineQueryResultArticle(
-        id: "\(arc4random_uniform(1000))",
+        id: "\(getRandomNum(0, 1000))",
         title: "Test title",
         inputMessageContent: TBInputTextMessageContent(messageText: "Test text")
     )
     article1.url = "google.com"
     let article2 = TBInlineQueryResultArticle(
-        id: "\(arc4random_uniform(1000))",
+        id: "\(getRandomNum(0, 1000))",
         title: "Awesome article",
         inputMessageContent: TBInputLocationMessageContent(longitude: 98.292905, latitude: 7.817627)
     )
@@ -113,7 +121,7 @@ private func respondToInlineQuery(_ inlineQuery: TBInlineQuery) {
     let btn3 = TBInlineKeyboardButton(text: "Btn3")
     btn3.callbackData = "btn3"
     let replyKeyboardMarkup = TBInlineKeyboardMarkup(buttons: [[btn1, btn2], [btn3]])
-    let article3 = TBInlineQueryResultArticle(id: "\(arc4random_uniform(1000))",
+    let article3 = TBInlineQueryResultArticle(id: "\(getRandomNum(0, 1000))",
         title: "Echo result",
         inputMessageContent: TBInputTextMessageContent(messageText: "Echo: \(inlineQuery.text)"),
         replyKeyboardMarkup: replyKeyboardMarkup
