@@ -111,6 +111,14 @@ public final class Mapper<N: BaseMappable> {
 				return try klass.init(map: map) as? N
 			} catch let error {
 				#if DEBUG
+				
+				#if os(Linux)
+				if let mapError = error as? MapError {
+					assert(false, "MapError\n\(mapError.description)")
+				} else {
+					assert(false, "ImmutableMappableError\n\(error.localizedDescription)")
+				}
+				#else
 				let exception: NSException
 				if let mapError = error as? MapError {
 					exception = NSException(name: .init(rawValue: "MapError"), reason: mapError.description, userInfo: nil)
@@ -118,6 +126,8 @@ public final class Mapper<N: BaseMappable> {
 					exception = NSException(name: .init(rawValue: "ImmutableMappableError"), reason: error.localizedDescription, userInfo: nil)
 				}
 				exception.raise()
+				#endif
+				
 				#endif
 			}
 		} else {

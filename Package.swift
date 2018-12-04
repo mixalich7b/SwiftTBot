@@ -8,7 +8,7 @@ let package = Package(
         .library(name: "SwiftTBot", targets: ["SwiftTBot"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/tristanhimmelman/ObjectMapper.git", from: "3.4.1")
+        .package(url: "https://github.com/mixalich7b/ObjectMapper.git", from: "3.4.2")
     ],
     targets: [
         .target(name: "SwiftTBot", dependencies: ["ObjectMapper"]),
