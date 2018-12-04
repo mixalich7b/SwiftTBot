@@ -9,6 +9,10 @@
 import Foundation
 import ObjectMapper
 
+#if os(Linux)
+fileprivate let NSEC_PER_SEC = CLOCKS_PER_SEC
+#endif
+
 internal typealias TBMessageHandlerClosure = (TBMessage) -> ()
 internal typealias TBRegexMessageHandlerClosure = (TBMessage, NSRange) -> ()
 
